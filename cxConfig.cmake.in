@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+
+set(cx_INCLUDE DIRS "@CMAKE_INSTALL_PREFIX@/include")
+set(cx_LIBRARIES cx)

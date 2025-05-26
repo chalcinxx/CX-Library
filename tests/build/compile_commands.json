@@ -1,0 +1,98 @@
+[
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/AssetManager.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/AssetManager.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/AssetManager.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/AssetManager.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/AudioManager.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/AudioManager.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/AudioManager.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/AudioManager.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Bar.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Bar.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Bar.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Bar.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Button.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Button.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Button.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Button.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Camera.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Camera.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Camera.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Camera.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/DataManager.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/DataManager.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/DataManager.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/DataManager.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/EventHandler.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/EventHandler.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/EventHandler.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/EventHandler.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/NavigationManager.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/NavigationManager.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/NavigationManager.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/NavigationManager.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/ParticleManager.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/ParticleManager.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/ParticleManager.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/ParticleManager.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Rect.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Rect.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Rect.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Rect.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Slider.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Slider.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Slider.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Slider.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Sprite.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Sprite.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Sprite.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Sprite.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Text.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/Text.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/Text.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/Text.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/TextInput.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/TextInput.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/TextInput.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/TextInput.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/UIElement.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/src/UIElement.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/src/UIElement.cpp",
+  "output": "CMakeFiles/release.dir/home/chalcinx/Documents/libraries/cx_ui_library/src/UIElement.cpp.o"
+},
+{
+  "directory": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/build",
+  "command": "clang++  -I/home/chalcinx/Documents/libraries/cx_ui_library/tests/../include -std=gnu++20 -o CMakeFiles/release.dir/project/main.cpp.o -c /home/chalcinx/Documents/libraries/cx_ui_library/tests/project/main.cpp",
+  "file": "/home/chalcinx/Documents/libraries/cx_ui_library/tests/project/main.cpp",
+  "output": "CMakeFiles/release.dir/project/main.cpp.o"
+}
+]
