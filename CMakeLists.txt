@@ -29,7 +29,6 @@ add_library(cx STATIC
    src/EventHandler.cpp
    src/AudioManager.cpp
    src/NavigationManager.cpp
-   src/DataManager.cpp
    src/Camera.cpp)
 
 # Specify where the installed libraries should go

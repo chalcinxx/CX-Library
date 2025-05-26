@@ -1,6 +1,7 @@
 #include "CX/AssetManager.hpp"
 
 #include "CX/Errors.hpp"
+#include <format>
 #include <iostream>
 #include <thread>
 

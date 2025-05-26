@@ -10,12 +10,16 @@ namespace cx
    /// @brief Create and modify RGBA colors.
    struct Color
    {
+   private:
+      using uint8 = unsigned char;
+   public:
+
       // Items
 
-      uint8_t r = 0;   ///< @brief Red.
-      uint8_t g = 0;   ///< @brief Green.
-      uint8_t b = 0;   ///< @brief Blue.
-      uint8_t a = 255; ///< @brief Alpha.
+      uint8 r = 0;   ///< @brief Red.
+      uint8 g = 0;   ///< @brief Green.
+      uint8 b = 0;   ///< @brief Blue.
+      uint8 a = 255; ///< @brief Alpha.
 
       // Constructors
 
@@ -26,7 +30,7 @@ namespace cx
       /// @brief Create a gray color.
       /// @param gray Gray intensity.
       /// @param alpha Alpha intensity.
-      constexpr Color(uint8_t gray, uint8_t alpha = 255)
+      constexpr Color(uint8 gray, uint8 alpha = 255)
          : r(gray), g(gray), b(gray), a(alpha) {}
 
       /// @brief Create a new color.
@@ -34,7 +38,7 @@ namespace cx
       /// @param green Green intensity.
       /// @param blue Blue intensity.
       /// @param alpha Alpha intensity.
-      constexpr Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha = 255)
+      constexpr Color(uint8 red, uint8 green, uint8 blue, uint8 alpha = 255)
          : r(red), g(green), b(blue), a(alpha) {}
 
       /// @brief Copy a color.
@@ -52,7 +56,7 @@ namespace cx
       /// @brief Create a gray color.
       /// @param gray Gray intensity.
       /// @param alpha Alpha intensity.
-      constexpr void create(uint8_t gray, uint8_t alpha = 255)
+      constexpr void create(uint8 gray, uint8 alpha = 255)
       {
          r = g = b = gray;
          a = alpha;
@@ -63,7 +67,7 @@ namespace cx
       /// @param green Green intensity.
       /// @param blue Blue intensity.
       /// @param alpha Alpha intensity.
-      constexpr void create(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha = 255)
+      constexpr void create(uint8 red, uint8 green, uint8 blue, uint8 alpha = 255)
       {
          r = red;
          g = green;
@@ -118,7 +122,7 @@ namespace cx
       /// @brief Return value by index.
       /// @param index Index of the value.
       /// @return Value.
-      constexpr uint8_t& operator[](size_t index)
+      constexpr uint8& operator[](size_t index)
       {
          if (index > 3)
             throw std::runtime_error(errors::color::out_of_bounds);
@@ -128,7 +132,7 @@ namespace cx
       /// @brief Return value by index.
       /// @param index Index of the value.
       /// @return Value.
-      constexpr uint8_t operator[](size_t index) const
+      constexpr uint8 operator[](size_t index) const
       {
          if (index > 3)
             throw std::runtime_error(errors::color::out_of_bounds);
@@ -138,7 +142,7 @@ namespace cx
       /// @brief Return value by index.
       /// @param index Index of the value.
       /// @return Value.
-      constexpr uint8_t& at(size_t index)
+      constexpr uint8& at(size_t index)
       {
          return (*this)[index];
       }
@@ -146,7 +150,7 @@ namespace cx
       /// @brief Return value by index.
       /// @param index Index of the value.
       /// @return Value.
-      constexpr uint8_t at(size_t index) const
+      constexpr uint8 at(size_t index) const
       {
          return (*this)[index];
       }

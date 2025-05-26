@@ -159,8 +159,8 @@ namespace cx
       inline static Vec4<T> random(U min = U(0), U max = U(1))
       {
          return Vec4<T>(
-            cx::random<T, U>(min, max), cx::random<T, U>(min, max),
-            cx::random<T, U>(min, max), cx::random<T, U>(min, max)
+            cx::random<T>(min, max), cx::random<T>(min, max),
+            cx::random<T>(min, max), cx::random<T>(min, max)
          );
       }
 
@@ -172,8 +172,8 @@ namespace cx
       inline static Vec4<T> random(const Vec4<U>& min, const Vec4<U>& max = Vec4<U>(1))
       {
          return Vec4<T>(
-            cx::random<T, U>(min.x, max.x), cx::random<T, U>(min.y, max.y),
-            cx::random<T, U>(min.w, max.w), cx::random<T, U>(min.h, max.h)
+            cx::random<T>(min.x, max.x), cx::random<T>(min.y, max.y),
+            cx::random<T>(min.w, max.w), cx::random<T>(min.h, max.h)
          );
       }
 

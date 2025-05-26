@@ -93,7 +93,7 @@ namespace cx
       template<Number U = T>
       inline static Vec2<T> random(U min = U(0), U max = U(1))
       {
-         return Vec2<T>(cx::random<T, U>(min, max), cx::random<T, U>(min, max));
+         return Vec2<T>(cx::random<T>(min, max), cx::random<T>(min, max));
       }
 
       /// @brief Create a random vector.
@@ -103,7 +103,7 @@ namespace cx
       template<Number U = T>
       inline static Vec2<T> random(const Vec2<U>& min, const Vec2<U>& max = Vec2<U>(1))
       {
-         return Vec2<T>(cx::random<T, U>(min.x, max.x), cx::random<T, U>(min.y, max.y));
+         return Vec2<T>(cx::random<T>(min.x, max.x), cx::random<T>(min.y, max.y));
       }
 
       // Arithmetic functions

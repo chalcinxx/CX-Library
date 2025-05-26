@@ -3,6 +3,7 @@
 
 #include "CX/Concepts.hpp"
 #include <random>
+#include <ctime>
 
 namespace cx
 {

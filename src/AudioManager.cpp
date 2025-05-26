@@ -4,6 +4,7 @@
 #include "CX/Errors.hpp"
 #include "CX/Math/Math.hpp"
 #include "CX/Math/Random.hpp"
+#include <format>
 
 namespace cx
 {

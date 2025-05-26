@@ -7,6 +7,7 @@
 #include "CX/EventHandler/Mouse.hpp"
 #include "CX/Vector/Vec4.hpp"
 #include <bitset>
+#include <unordered_map>
 
 namespace cx
 {
