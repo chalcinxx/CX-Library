@@ -73,9 +73,10 @@ find_package(cx REQUIRED)
 find_package(SFML 2.6 COMPONENTS window system graphics audio REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE sfml-window sfml-system sfml-graphics sfml-audio ${cx_LIBRARIES})
 ```
+Actively working on getting this library on other platforms.
 
-### Credits
-This library uses SFML [(Official SFML website)](https://www.sfml-dev.org/) for most of the features. Thanks to all of the people who have contributed to SFML.
+### Dependencies
+This library uses SFML [(Official SFML website)](https://www.sfml-dev.org/) for most of the features, which is licensed under zlib/png license.
 
 ### Contributors
 Chalcinxx. [(Youtube)](https://www.youtube.com/@chalcinxx), [(Github)](https://github.com/chalcinxx)
