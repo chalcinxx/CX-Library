@@ -19,37 +19,29 @@ namespace cx
 
       /// @brief Create a new rectangle.
       /// @param style Style of the rectangle.
-      /// @param functions Functions of the rectangle.
-      Rect(const RectStyle& style,
-           const Functions& functions = {});
+      Rect(const RectStyle& style);
 
       /// @brief Create a new rectangle.
       /// @param size Size of the rectangle.
       /// @param position Center position of the rectangle.
       /// @param color Color of the rectangle.
-      /// @param functions Functions of the rectangle.
       Rect(const Vec2f& size,
            const Vec2f& position = Vec2f(),
-           const Color& color = Color(255),
-           const Functions& functions = {});
+           const Color& color = Color(255));
 
       // Constructors after creation
 
       /// @brief Create a new rectangle.
       /// @param style Style of the rectangle.
-      /// @param functions Functions of the rectangle.
-      void create(const RectStyle& style,
-                  const Functions& functions = {});
+      void create(const RectStyle& style);
 
       /// @brief Create a new rectangle.
       /// @param size Size of the rectangle.
       /// @param position Center position of the rectangle.
       /// @param color Color of the rectangle.
-      /// @param functions Functions of the rectangle.
       void create(const Vec2f& size,
                   const Vec2f& position = Vec2f(),
-                  const Color& color = Color(255),
-                  const Functions& functions = {});
+                  const Color& color = Color(255));
 
       // Setter functions
 

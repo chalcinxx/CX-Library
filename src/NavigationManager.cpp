@@ -369,11 +369,6 @@ namespace cx
       return elements.contains(cindex) && elements.at(cindex).is_hovering();
    }
 
-   bool NavigationManager::is_selected_not_hovered_on() const
-   {
-      return elements.contains(cindex) && elements.at(cindex).is_not_hovering();
-   }
-
    size_t NavigationManager::get_selected_index() const
    {
       return cindex;

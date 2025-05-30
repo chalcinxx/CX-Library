@@ -1,3 +1,0 @@
-/home/chalcinx/Documents/libraries/cx_ui_library/tests/build/CMakeFiles/release.dir
-/home/chalcinx/Documents/libraries/cx_ui_library/tests/build/CMakeFiles/edit_cache.dir
-/home/chalcinx/Documents/libraries/cx_ui_library/tests/build/CMakeFiles/rebuild_cache.dir

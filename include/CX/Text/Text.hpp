@@ -21,10 +21,8 @@ namespace cx
       /// @brief Create a new text.
       /// @param style Style of the text.
       /// @param string String of the text.
-      /// @param functions Functions of the text.
       Text(const TextStyle& style,
-           const std::string& string,
-           const Functions& functions = {});
+           const std::string& string);
 
       /// @brief Create a new text.
       /// @param string String of the text.
@@ -32,23 +30,19 @@ namespace cx
       /// @param position Position of the text.
       /// @param char_size Character size of the text.
       /// @param outline_thickness Outline thickness of the text.
-      /// @param functions Functions of the text.
       Text(const std::string& string,
            const sf::Font& font,
            const Vec2f& position = Vec2f(),
            unsigned char_size = 32U,
-           float outline_thickness = 0.f,
-           const Functions& functions = {});
+           float outline_thickness = 0.f);
 
       // Constructors after creation
 
       /// @brief Create a new text.
       /// @param style Style of the text.
       /// @param string String of the text.
-      /// @param functions Functions of the text.
       void create(const TextStyle& style,
-                  const std::string& string,
-                  const Functions& functions = {});
+                  const std::string& string);
 
       /// @brief Create a new text.
       /// @param string String of the text.
@@ -56,13 +50,11 @@ namespace cx
       /// @param position Position of the text.
       /// @param char_size Character size of the text.
       /// @param outline_thickness Outline thickness of the text.
-      /// @param functions Functions of the text.
       void create(const std::string& string,
                   const sf::Font& font,
                   const Vec2f& position = Vec2f(),
                   unsigned char_size = 32U,
-                  float outline_thickness = 0.f,
-                  const Functions& functions = {});
+                  float outline_thickness = 0.f);
 
       // Setter functions
 

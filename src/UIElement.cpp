@@ -303,9 +303,19 @@ namespace cx
       return hovering;
    }
 
-   bool UIElement::is_not_hovering() const
+   bool UIElement::was_hovering() const
    {
-      return !hovering;
+      return was_hover;
+   }
+
+   bool UIElement::stopped_hovering() const
+   {
+      return was_hover && !hovering;
+   }
+
+   bool UIElement::started_hovering() const
+   {
+      return !was_hover && hovering;
    }
 
    bool UIElement::is_clicked() const
@@ -323,85 +333,23 @@ namespace cx
       return mouse_down;
    }
 
-   // Function setter functions
-
-   void UIElement::on_hover_start(const std::function<void(UIElement&)>& func)
+   void UIElement::on_update(const std::function<void(UIElement&)>& func)
    {
-      on_hover_start_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::on_hover_end(const std::function<void(UIElement&)>& func)
-   {
-      on_hover_end_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::on_hovering(const std::function<void(UIElement&)>& func)
-   {
-      on_hovering_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::on_not_hovering(const std::function<void(UIElement&)>& func)
-   {
-      on_not_hovering_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::on_click(const std::function<void(UIElement&)>& func)
-   {
-      on_click_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::on_mouse_down(const std::function<void(UIElement&)>& func)
-   {
-      on_mouse_down_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::on_mouse_up(const std::function<void(UIElement&)>& func)
-   {
-      on_mouse_up_func = (func ? func : [](UIElement&){});
-   }
-
-   void UIElement::set_functions(const Functions& functions)
-   {
-      on_click_func = functions.on_click;
-      on_mouse_down_func = functions.on_mouse_down;
-      on_mouse_up_func = functions.on_mouse_up;
-      on_hover_start_func = functions.on_hover_start;
-      on_hover_end_func = functions.on_hover_end;
-      on_hovering_func = functions.on_hovering;
-      on_not_hovering_func = functions.on_not_hovering;
+      on_update_func = std::make_shared<std::function<void(UIElement&)>>(func ? func : [](UIElement&){});
    }
 
    // Update functions
 
    void UIElement::update_state(const MouseState& state, bool local)
    {
-      const bool mouse_in = (local ? get_local_bounds() : get_bounds()).contains(state.position);
-
-      if (!hovering && mouse_in)
-         on_hover_start_func(*this);
-
-      if (hovering && !mouse_in)
-         on_hover_end_func(*this);
-
-      if (mouse_in)
-         on_hovering_func(*this);
-      else
-         on_not_hovering_func(*this);
-
-      hovering = mouse_in;
+      was_hover = hovering;
+      hovering = (local ? get_local_bounds() : get_bounds()).contains(state.position);
 
       const bool is_mouse_down = (hovering && state.is_down);
       mouse_up = !is_mouse_down && mouse_down && hovering;
       clicked = is_mouse_down && !mouse_down && hovering;
       mouse_down = is_mouse_down;
 
-      if (clicked)
-         on_click_func(*this);
-
-      if (mouse_up)
-         on_mouse_up_func(*this);
-
-      if (mouse_down)
-         on_mouse_down_func(*this);
+      (*on_update_func)(*this);
    }
 }

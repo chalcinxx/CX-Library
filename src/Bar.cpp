@@ -1,5 +1,7 @@
 #include "CX/Bar/Bar.hpp"
 
+#include "CX/Config.hpp" // IWYU pragma: export
+
 namespace cx
 {
    // Set default styles
@@ -23,8 +25,7 @@ namespace cx
    }
 
    Bar::Bar(const BarStyle& style,
-            float progress,
-            const Functions& functions)
+            float progress)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error("Could not load clipping_shader.frag!");
@@ -44,15 +45,13 @@ namespace cx
 
       bar_progress = std::clamp(progress, 0.f, 1.f);
       updateBar();
-      set_functions(functions);
    }
 
    Bar::Bar(const Vec2f& size,
             const Vec2f& position,
             float progress,
             const Color& fg_color,
-            const Color& bg_color,
-            const Functions& functions)
+            const Color& bg_color)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error("Could not load clipping_shader.frag!");
@@ -70,14 +69,12 @@ namespace cx
       
       bar_progress = std::clamp(progress, 0.f, 1.f);
       updateBar();
-      set_functions(functions);
    }
 
    // Constructors after creation
 
    void Bar::create(const BarStyle& style,
-                    float progress,
-                    const Functions& functions)
+                    float progress)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error("Could not load clipping_shader.frag!");
@@ -97,15 +94,13 @@ namespace cx
 
       bar_progress = std::clamp(progress, 0.f, 1.f);
       updateBar();
-      set_functions(functions);
    }
 
    void Bar::create(const Vec2f& size,
                     const Vec2f& position,
                     float progress,
                     const Color& fg_color,
-                    const Color& bg_color,
-                    const Functions& functions)
+                    const Color& bg_color)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error("Could not load clipping_shader.frag!");
@@ -123,7 +118,6 @@ namespace cx
       
       bar_progress = std::clamp(progress, 0.f, 1.f);
       updateBar();
-      set_functions(functions);
    }
 
    // Setter functions

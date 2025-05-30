@@ -21,10 +21,8 @@ namespace cx
       /// @brief Create a new bar.
       /// @param style Style of the bar.
       /// @param progress Progress of the bar 0 to 1.
-      /// @param functions Functions of the bar.
       Bar(const BarStyle& style,
-          float progress = 1.f,
-          const Functions& functions = {});
+          float progress = 1.f);
 
       /// @brief Create a new bar.
       /// @param size Size of the bar.
@@ -32,23 +30,19 @@ namespace cx
       /// @param progress Progress of the bar 0 to 1.
       /// @param fg_color Foreground color.
       /// @param bg_color Background color.
-      /// @param functions Functions of the bar.
       Bar(const Vec2f& size,
           const Vec2f& position = Vec2f(),
           float progress = 1.f,
           const Color& fg_color = Color(255),
-          const Color& bg_color = Color(0),
-          const Functions& functions = {});
+          const Color& bg_color = Color(0));
 
       // Constructors after creation
 
       /// @brief Create a new bar.
       /// @param style Style of the bar.
       /// @param progress Progress of the bar 0 to 1.
-      /// @param functions Functions of the bar.
       void create(const BarStyle& style,
-                  float progress = 1.f,
-                  const Functions& functions = {});
+                  float progress = 1.f);
 
       /// @brief Create a new bar.
       /// @param size Size of the bar.
@@ -56,13 +50,11 @@ namespace cx
       /// @param progress Progress of the bar 0 to 1.
       /// @param fg_color Foreground color.
       /// @param bg_color Background color.
-      /// @param functions Functions of the bar.
       void create(const Vec2f& size,
                   const Vec2f& position = Vec2f(),
                   float progress = 1.f,
                   const Color& fg_color = Color(255),
-                  const Color& bg_color = Color(0),
-                  const Functions& functions = {});
+                  const Color& bg_color = Color(0));
 
       // Setter functions
 

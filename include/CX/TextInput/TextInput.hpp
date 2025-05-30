@@ -6,8 +6,8 @@
 #include "CX/EventHandler/Controller.hpp"
 #include "CX/EventHandler/Key.hpp"
 #include "CX/Text/FontStyle.hpp"
-#include "CX/TextInput/TextInputFunctions.hpp"
 #include "CX/TextInput/TextInputStyle.hpp"
+#include "CX/UIElement/UIElement.hpp"
 
 namespace cx
 {
@@ -26,10 +26,8 @@ namespace cx
       /// @brief Create a new input.
       /// @param style Style of the input.
       /// @param string String of the text.
-      /// @param functions Functions of the input.
       TextInput(const TextInputStyle& style,
-                const std::string& string,
-                const Functions& functions = {});
+                const std::string& string);
 
       /// @brief Create a new input.
       /// @param string String of the text.
@@ -37,23 +35,19 @@ namespace cx
       /// @param size Size of the input.
       /// @param position Position of the input.
       /// @param char_size Character size of the input.
-      /// @param functions Functions of the input.
       TextInput(const std::string& string,
                 const sf::Font& font,
                 const Vec2f& size,
                 const Vec2f& position = {},
-                unsigned char_size = 32,
-                const Functions& functions = {});
+                unsigned char_size = 32);
 
       // Constructors after creation
 
       /// @brief Create a new input.
       /// @param style Style of the input.
       /// @param string String of the text.
-      /// @param functions Functions of the input.
       void create(const TextInputStyle& style,
-                  const std::string& string,
-                  const Functions& functions = {});
+                  const std::string& string);
 
       /// @brief Create a new input.
       /// @param string String of the text.
@@ -61,13 +55,11 @@ namespace cx
       /// @param size Size of the input.
       /// @param position Position of the input.
       /// @param char_size Character size of the input.
-      /// @param functions Functions of the input.
       void create(const std::string& string,
                   const sf::Font& font,
                   const Vec2f& size,
                   const Vec2f& position = {},
-                  unsigned char_size = 32,
-                  const Functions& functions = {});
+                  unsigned char_size = 32);
 
       // Setter functions
 
@@ -331,28 +323,6 @@ namespace cx
       /// @param shader Shader.
       void render(sf::RenderWindow& window, const sf::Shader* shader) const override;
 
-   // Function setter functions
-
-   /// @brief Called when user selects input.
-   /// @param func Function.
-   void on_active_start(const std::function<void(UIElement&)>& func);
-
-   /// @brief Called when user unselects input.
-   /// @param func Function.
-   void on_active_end(const std::function<void(UIElement&)>& func);
-
-   /// @brief Called every frame the input is active.
-   /// @param func Function.
-   void on_active(const std::function<void(UIElement&)>& func);
-
-   /// @brief Called every frame the input is not active.
-   /// @param func Function.
-   void on_not_active(const std::function<void(UIElement&)>& func);
-
-   /// @brief Set all input specific functions.
-   /// @param functions All functions.
-   void set_input_functions(const TextInputFunctions& functions);
-
    // Access functions
 
    /// @brief Get background.
@@ -377,11 +347,6 @@ namespace cx
 
       sf::RectangleShape rect;
       sf::Text text;
-
-      std::function<void(UIElement&)> on_active_start_func = [](UIElement&){};
-      std::function<void(UIElement&)> on_active_end_func   = [](UIElement&){};
-      std::function<void(UIElement&)> on_active_func       = [](UIElement&){};
-      std::function<void(UIElement&)> on_not_active_func   = [](UIElement&){};
 
       /// @brief Recenter the text.
       void recenter();

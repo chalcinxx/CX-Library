@@ -24,13 +24,11 @@ namespace cx
       /// @param min_value Minimum slider value.
       /// @param max_value Maximum slider value.
       /// @param progress Progress of the slider.
-      /// @param functions Functions of the slider.
       Slider(const SliderStyle& style,
              float step = 1.f,
              float min_value = 0.f,
              float max_value = 100.f,
-             float progress = .5f,
-             const Functions& functions = {});
+             float progress = .5f);
 
       /// @brief Create a new slider.
       /// @param background_size Size of the background.
@@ -40,15 +38,13 @@ namespace cx
       /// @param min_value Minimum slider value.
       /// @param max_value Maximum slider value.
       /// @param progress Progress of the slider.
-      /// @param functions Functions of the slider.
       Slider(const Vec2f& background_size,
              const Vec2f& knob_size,
              const Vec2f& position = Vec2f(),
              float step = 1.f,
              float min_value = 0.f,
              float max_value = 100.f,
-             float progress = .5f,
-             const Functions& functions = {});
+             float progress = .5f);
    
       // Constructors after creation
 
@@ -58,13 +54,11 @@ namespace cx
       /// @param min_value Minimum slider value.
       /// @param max_value Maximum slider value.
       /// @param progress Progress of the slider.
-      /// @param functions Functions of the slider.
       void create(const SliderStyle& style,
                   float step = 1.f,
                   float min_value = 0.f,
                   float max_value = 100.f,
-                  float progress = .5f,
-                  const Functions& functions = {});
+                  float progress = .5f);
 
       /// @brief Create a new slider.
       /// @param background_size Size of the background.
@@ -74,15 +68,13 @@ namespace cx
       /// @param min_value Minimum slider value.
       /// @param max_value Maximum slider value.
       /// @param progress Progress of the slider.
-      /// @param functions Functions of the slider.
       void create(const Vec2f& background_size,
                   const Vec2f& knob_size,
                   const Vec2f& position = Vec2f(),
                   float step = 1.f,
                   float min_value = 0.f,
                   float max_value = 100.f,
-                  float progress = .5f,
-                  const Functions& functions = {});
+                  float progress = .5f);
    
       // Setter functions
 

@@ -22,10 +22,8 @@ namespace cx
       /// @brief Create a new button.
       /// @param style Style of the button.
       /// @param string String of the text.
-      /// @param functions Functions of the button.
       Button(const ButtonStyle& style,
-             const std::string& string,
-             const Functions& functions = {});
+             const std::string& string);
 
       /// @brief Create a new button.
       /// @param color Color of the button.
@@ -34,24 +32,20 @@ namespace cx
       /// @param size Size of the button.
       /// @param position Position of the button.
       /// @param char_size Character size of the text.
-      /// @param functions Functions of the button.
       Button(const Color& color,
              const std::string& string,
              const sf::Font& font,
              const Vec2f& size,
              const Vec2f& position = Vec2f(),
-             unsigned char_size = 32,
-             const Functions& functions = {});
+             unsigned char_size = 32);
 
       // Constructors after creation
 
       /// @brief Create a new button.
       /// @param style Style of the button.
       /// @param string String of the text.
-      /// @param functions Functions of the button.
       void create(const ButtonStyle& style,
-                  const std::string& string,
-                  const Functions& functions = {});
+                  const std::string& string);
 
       /// @brief Create a new button.
       /// @param color Color of the button.
@@ -60,14 +54,12 @@ namespace cx
       /// @param size Size of the button.
       /// @param position Position of the button.
       /// @param char_size Character size of the text.
-      /// @param functions Functions of the button.
       void create(const Color& color,
                   const std::string& string,
                   const sf::Font& font,
                   const Vec2f& size,
                   const Vec2f& position = Vec2f(),
-                  unsigned char_size = 32,
-                  const Functions& functions = {});
+                  unsigned char_size = 32);
 
       // Setter functions
 

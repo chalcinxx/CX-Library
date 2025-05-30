@@ -19,8 +19,7 @@ namespace cx
    }
 
    Text::Text(const TextStyle& style,
-              const std::string& string,
-              const Functions& functions)
+              const std::string& string)
    {
       if (style.font->getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -33,15 +32,13 @@ namespace cx
       text.setOutlineThickness(style.outline_thickness);
 
       text.setOrigin(Vec4f(text.getGlobalBounds()).get_center());
-      set_functions(functions);
    }
 
    Text::Text(const std::string& string,
               const sf::Font& font,
               const Vec2f& position,
               unsigned char_size,
-              float shadow_thickness,
-              const Functions& functions)
+              float shadow_thickness)
    {
       if (font.getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -54,14 +51,12 @@ namespace cx
 
       text.setOrigin(Vec4f(text.getGlobalBounds()).get_center());
       text.setPosition(position);
-      set_functions(functions);
    }
 
    // Constructors after creation.
 
    void Text::create(const TextStyle& style,
-                     const std::string& string,
-                     const Functions& functions)
+                     const std::string& string)
    {
       if (style.font->getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -74,15 +69,13 @@ namespace cx
       text.setOutlineThickness(style.outline_thickness);
 
       text.setOrigin(Vec4f(text.getGlobalBounds()).get_center());
-      set_functions(functions);
    }
 
    void Text::create(const std::string& string,
                      const sf::Font& font,
                      const Vec2f& position,
                      unsigned char_size,
-                     float shadow_thickness,
-                     const Functions& functions)
+                     float shadow_thickness)
    {
       if (font.getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -95,7 +88,6 @@ namespace cx
 
       text.setOrigin(Vec4f(text.getGlobalBounds()).get_center());
       text.setPosition(position);
-      set_functions(functions);
    }
 
    // Setter functions

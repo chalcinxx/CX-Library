@@ -17,8 +17,7 @@ namespace cx
       rect.setOutlineColor(Color(0));
    }
 
-   Sprite::Sprite(const SpriteStyle& style,
-                  const Functions& functions)
+   Sprite::Sprite(const SpriteStyle& style)
    {
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
@@ -29,14 +28,12 @@ namespace cx
 
       if (!style.texture_rect.empty())
          rect.setTextureRect(style.texture_rect);
-      set_functions(functions);
    }
 
    Sprite::Sprite(const Vec2f& size,
                   const Vec2f& position,
                   const sf::Texture* texture,
-                  const Vec4i& texture_rect,
-                  const Functions& functions)
+                  const Vec4i& texture_rect)
    {
       rect.setPosition(position);
       rect.setSize(size);
@@ -46,13 +43,11 @@ namespace cx
 
       if (!texture_rect.empty())
          rect.setTextureRect(texture_rect);
-      set_functions(functions);
    }
 
    // Constructors after creation
 
-   void Sprite::create(const SpriteStyle& style,
-                       const Functions& functions)
+   void Sprite::create(const SpriteStyle& style)
    {
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
@@ -63,14 +58,12 @@ namespace cx
 
       if (!style.texture_rect.empty())
          rect.setTextureRect(style.texture_rect);
-      set_functions(functions);
    }
 
    void Sprite::create(const Vec2f& size,
                        const Vec2f& position,
                        const sf::Texture* texture,
-                       const Vec4i& textureRect,
-                       const Functions& functions)
+                       const Vec4i& textureRect)
    {
       rect.setPosition(position);
       rect.setSize(size);
@@ -80,7 +73,6 @@ namespace cx
 
       if (!textureRect.empty())
          rect.setTextureRect(textureRect);
-      set_functions(functions);
    }
 
    // Setter functions

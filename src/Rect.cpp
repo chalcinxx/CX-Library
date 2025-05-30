@@ -15,8 +15,7 @@ namespace cx
       rect.setOutlineColor(Color(0));
    }
 
-   Rect::Rect(const RectStyle& style,
-              const Functions& functions)
+   Rect::Rect(const RectStyle& style)
    {
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
@@ -24,26 +23,22 @@ namespace cx
       rect.setOutlineColor(style.outline_color);
       rect.setOutlineThickness(style.outline_thickness);
       rect.setTexture(style.texture.get());
-      set_functions(functions);
    }
 
    Rect::Rect(const Vec2f& size,
               const Vec2f& position,
-              const Color& color,
-              const Functions& functions)
+              const Color& color)
    {
       rect.setPosition(position);
       rect.setSize(size);
       rect.setOrigin(size * .5f);
       rect.setFillColor(color);
       rect.setOutlineColor(Color(0));
-      set_functions(functions);
    }
 
    // Constructors after creation
 
-   void Rect::create(const RectStyle& style,
-                     const Functions& functions)
+   void Rect::create(const RectStyle& style)
    {
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
@@ -51,20 +46,17 @@ namespace cx
       rect.setOutlineColor(style.outline_color);
       rect.setOutlineThickness(style.outline_thickness);
       rect.setTexture(style.texture.get());
-      set_functions(functions);
    }
 
    void Rect::create(const Vec2f& size,
                      const Vec2f& position,
-                     const Color& color,
-                     const Functions& functions)
+                     const Color& color)
    {
       rect.setPosition(position);
       rect.setSize(size);
       rect.setOrigin(size * .5f);
       rect.setFillColor(color);
       rect.setOutlineColor(Color(0));
-      set_functions(functions);
    }
 
    // Setter functions

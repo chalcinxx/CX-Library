@@ -318,10 +318,6 @@ namespace cx
       /// @return True if hovered.
       bool is_selected_hovered_on() const;
 
-      /// @brief Check if selected is not getting hovered on.
-      /// @return True if not hovering.
-      bool is_selected_not_hovered_on() const;
-
       /// @brief Get selected index. Will be invalid if none are selected.
       /// @return Selected index.
       size_t get_selected_index() const;

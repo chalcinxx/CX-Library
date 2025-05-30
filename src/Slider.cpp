@@ -1,5 +1,7 @@
 #include "CX/Slider/Slider.hpp"
 
+#include "CX/Config.hpp" // IWYU pragma: export
+
 namespace cx
 {
    // Set default styles
@@ -27,8 +29,7 @@ namespace cx
                   float step,
                   float min_value,
                   float max_value,
-                  float progress,
-                  const Functions& functions)
+                  float progress)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error(errors::slider::could_not_load_shader);
@@ -61,7 +62,6 @@ namespace cx
       knob.setTexture(style.knob_texture.get());
 
       reposition_knob();
-      set_functions(functions);
    }
 
    Slider::Slider(const Vec2f& background_size,
@@ -70,8 +70,7 @@ namespace cx
                   float step,
                   float min_value,
                   float max_value,
-                  float progress,
-                  const Functions& functions)
+                  float progress)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error(errors::slider::could_not_load_shader);
@@ -100,7 +99,6 @@ namespace cx
       knob.setOutlineColor(Color(0));
 
       reposition_knob();
-      set_functions(functions);
    }
 
    // Constructors after creation
@@ -109,8 +107,7 @@ namespace cx
                        float step,
                        float min_value,
                        float max_value,
-                       float progress,
-                       const Functions& functions)
+                       float progress)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error(errors::slider::could_not_load_shader);
@@ -143,7 +140,6 @@ namespace cx
       knob.setTexture(style.knob_texture.get());
 
       reposition_knob();
-      set_functions(functions);
    }
 
    void Slider::create(const Vec2f& background_size,
@@ -152,8 +148,7 @@ namespace cx
                        float step,
                        float min_value,
                        float max_value,
-                       float progress,
-                       const Functions& functions)
+                       float progress)
    {
       if (!clip_shader.loadFromFile(CX_SHADER_PATH "clipping_shader.frag", sf::Shader::Fragment))
          throw std::runtime_error(errors::slider::could_not_load_shader);
@@ -182,7 +177,6 @@ namespace cx
       knob.setOutlineColor(Color(0));
 
       reposition_knob();
-      set_functions(functions);
    }
 
    // Setter functions

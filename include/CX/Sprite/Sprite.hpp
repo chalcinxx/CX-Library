@@ -20,41 +20,33 @@ namespace cx
 
       /// @brief Create a new sprite.
       /// @param style Style of the sprite.
-      /// @param functions Functions of the sprite.
-      Sprite(const SpriteStyle& style,
-             const Functions& functions = {});
+      Sprite(const SpriteStyle& style);
 
       /// @brief Create a new sprite.
       /// @param size Size of the sprite.
       /// @param position Center position of the sprite.
       /// @param texture Texture of the sprite.
       /// @param texture_rect Texture rect of the sprite.
-      /// @param functions Functions of the sprite.
       Sprite(const Vec2f& size,
              const Vec2f& position,
              const sf::Texture* texture,
-             const Vec4i& texture_rect = Vec4i(),
-             const Functions& functions = {});
+             const Vec4i& texture_rect = Vec4i());
 
       // Constructors after creation
 
       /// @brief Create a new sprite.
       /// @param style Style of the sprite.
-      /// @param functions Functions of the sprite.
-      void create(const SpriteStyle& style,
-                  const Functions& functions = {});
+      void create(const SpriteStyle& style);
 
       /// @brief Create a new sprite.
       /// @param size Size of the sprite.
       /// @param position Center position of the sprite.
       /// @param texture Texture of the sprite.
       /// @param texture_rect Texture rect of the sprite.
-      /// @param functions Functions of the sprite.
       void create(const Vec2f& size,
                   const Vec2f& position,
                   const sf::Texture* texture,
-                  const Vec4i& texture_rect = Vec4i(),
-                  const Functions& functions = {});
+                  const Vec4i& texture_rect = Vec4i());
 
       // Setter functions
 

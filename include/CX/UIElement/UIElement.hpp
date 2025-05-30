@@ -342,13 +342,27 @@ namespace cx
       /// @param local Should local boundaries be used.
       virtual void update(const MouseState& state, bool local = false) = 0;
 
+      /// @brief Set the function that is called after updating the element.
+      /// @param func Function.
+      void on_update(const std::function<void(UIElement&)>& func);
+
+      // Update getter functions
+
       /// @brief Check if element is being hovered on.
       /// @return True if being hovered on.
       bool is_hovering() const;
 
-      /// @brief Check if element is not being hovered on.
-      /// @return True if not being hovered on.
-      bool is_not_hovering() const;
+      /// @brief Check if element was being hovered on last frame.
+      /// @return True if was hovered on last frame.
+      bool was_hovering() const;
+
+      /// @brief Check if element has stopped being hovered on.
+      /// @return True if stopped hovering.
+      bool stopped_hovering() const;
+
+      /// @brief Check if element has started being hovered on.
+      /// @return True if started hovering.
+      bool started_hovering() const;
 
       /// @brief Check if element has been clicked this frame.
       /// @return True if clicked.
@@ -362,40 +376,6 @@ namespace cx
       /// @return True if mouse is held down.
       bool is_mouse_down() const;
 
-      // Function setter functions
-
-      /// @brief Called when mouse enters the element.
-      /// @param func Function.
-      void on_hover_start(const std::function<void(UIElement&)>& func);
-
-      /// @brief Called when mouse exits the element.
-      /// @param func Function.
-      void on_hover_end(const std::function<void(UIElement&)>& func);
-
-      /// @brief Called every frame mouse is inside the element.
-      /// @param func Function.
-      void on_hovering(const std::function<void(UIElement&)>& func);
-
-      /// @brief Called every frame mouse isn't inside the element.
-      /// @param func Function.
-      void on_not_hovering(const std::function<void(UIElement&)>& func);
-
-      /// @brief Called when element is clicked on.
-      /// @param func Function.
-      void on_click(const std::function<void(UIElement&)>& func);
-
-      /// @brief Called every frame mouse is held down on the element. 
-      /// @param func Function.
-      void on_mouse_down(const std::function<void(UIElement&)>& func);
-
-      /// @brief Called when mouse is released on the element.
-      /// @param func Function.
-      void on_mouse_up(const std::function<void(UIElement&)>& func);
-
-      /// @brief Set all overridable functions.
-      /// @param functions All functions.
-      void set_functions(const Functions& functions);
-
       // Render functions
 
       /// @brief Render the element.
@@ -408,18 +388,14 @@ namespace cx
       virtual void render(sf::RenderWindow& window, const sf::Shader* shader) const = 0;
 
    protected:
+      bool was_hover  = false;
       bool hovering   = false;
       bool clicked    = false;
       bool mouse_down = false;
       bool mouse_up   = false;
 
-      std::function<void(UIElement&)> on_click_func        = [](UIElement&){};
-      std::function<void(UIElement&)> on_mouse_down_func   = [](UIElement&){};
-      std::function<void(UIElement&)> on_mouse_up_func     = [](UIElement&){};
-      std::function<void(UIElement&)> on_hover_start_func  = [](UIElement&){};
-      std::function<void(UIElement&)> on_hover_end_func    = [](UIElement&){};
-      std::function<void(UIElement&)> on_hovering_func     = [](UIElement&){};
-      std::function<void(UIElement&)> on_not_hovering_func = [](UIElement&){};
+      using func = std::function<void(UIElement&)>;
+      std::shared_ptr<func> on_update_func = std::make_shared<func>([](UIElement&){});
 
       /// @brief Update the element's state and functions.
       /// @param state Mouse state.

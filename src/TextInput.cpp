@@ -19,63 +19,7 @@ namespace cx
    }
 
    TextInput::TextInput(const TextInputStyle& style,
-                        const std::string& string,
-                        const Functions& functions)
-   {
-      if (style.font->getInfo().family.empty())
-         throw std::runtime_error(errors::text::invalid_font);
-
-      text.setString(string);
-      text.setFont(*style.font);
-      text.setCharacterSize(style.char_size);
-      text.setFillColor(style.text_color);
-      text.setOutlineThickness(style.text_outline_thickness);
-      text.setOutlineColor(style.text_outline_color);
-      hidden = string;
-
-      rect.setSize(style.size);
-      rect.setTexture(style.texture.get());
-      rect.setFillColor(style.color);
-      rect.setOutlineThickness(style.outline_thickness);
-      rect.setOutlineColor(style.outline_color);
-
-      rect.setOrigin(style.size * .5f);
-      recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
-   }
-
-   TextInput::TextInput(const std::string& string,
-                        const sf::Font& font,
-                        const Vec2f& size,
-                        const Vec2f& position,
-                        unsigned char_size,
-                        const Functions& functions)
-   {
-      if (font.getInfo().family.empty())
-         throw std::runtime_error(errors::text::invalid_font);
-
-      text.setString(string);
-      text.setFont(font);
-      text.setCharacterSize(char_size);
-      text.setOutlineColor(Color(0));
-      hidden = string;
-
-      rect.setPosition(position);
-      rect.setSize(size);
-      rect.setOutlineColor(Color(0));
-
-      rect.setOrigin(size * .5f);
-      recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
-   }
-
-   // Constructors after creation
-
-   void TextInput::create(const TextInputStyle& style,
-                          const std::string& string,
-                          const Functions& functions)
+                        const std::string& string)
    {
       if (style.font->getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -97,15 +41,13 @@ namespace cx
       rect.setOrigin(style.size * .5f);
       recenter();
       text.setPosition(rect.getPosition());
-      set_functions(functions);
    }
 
-   void TextInput::create(const std::string& string,
-                          const sf::Font& font,
-                          const Vec2f& size,
-                          const Vec2f& position,
-                          unsigned char_size,
-                          const Functions& functions)
+   TextInput::TextInput(const std::string& string,
+                        const sf::Font& font,
+                        const Vec2f& size,
+                        const Vec2f& position,
+                        unsigned char_size)
    {
       if (font.getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -122,8 +64,58 @@ namespace cx
 
       rect.setOrigin(size * .5f);
       recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
+      text.setPosition(rect.getPosition());
+   }
+
+   // Constructors after creation
+
+   void TextInput::create(const TextInputStyle& style,
+                          const std::string& string)
+   {
+      if (style.font->getInfo().family.empty())
+         throw std::runtime_error(errors::text::invalid_font);
+
+      text.setString(string);
+      text.setFont(*style.font);
+      text.setCharacterSize(style.char_size);
+      text.setFillColor(style.text_color);
+      text.setOutlineThickness(style.text_outline_thickness);
+      text.setOutlineColor(style.text_outline_color);
+      hidden = string;
+
+      rect.setSize(style.size);
+      rect.setTexture(style.texture.get());
+      rect.setFillColor(style.color);
+      rect.setOutlineThickness(style.outline_thickness);
+      rect.setOutlineColor(style.outline_color);
+
+      rect.setOrigin(style.size * .5f);
+      recenter();
+      text.setPosition(rect.getPosition());
+   }
+
+   void TextInput::create(const std::string& string,
+                          const sf::Font& font,
+                          const Vec2f& size,
+                          const Vec2f& position,
+                          unsigned char_size)
+   {
+      if (font.getInfo().family.empty())
+         throw std::runtime_error(errors::text::invalid_font);
+
+      text.setString(string);
+      text.setFont(font);
+      text.setCharacterSize(char_size);
+      text.setOutlineColor(Color(0));
+      hidden = string;
+
+      rect.setPosition(position);
+      rect.setSize(size);
+      rect.setOutlineColor(Color(0));
+
+      rect.setOrigin(size * .5f);
+      recenter();
+      text.setPosition(rect.getPosition());
    }
 
    // Setter functions
@@ -443,19 +435,14 @@ namespace cx
 
    void TextInput::update(const MouseState& state, bool local)
    {
-      update_state(state, local);
-      clicked = clicked && !input_disabled;
-      mouse_up = mouse_up && !input_disabled;
-      mouse_down = mouse_down && !input_disabled;
+      const auto& en = !input_disabled;
+      const MouseState new_state {state.button, state.position, state.is_pressed && en, state.is_released && en, state.is_down && en};
+      update_state(new_state, local);
    }
 
    void TextInput::update_input(const EventHandler& event, bool local)
    {
-      update_state(event.get_mouse_state(Mouse::left), local);
-      clicked = clicked && !input_disabled;
-      mouse_up = mouse_up && !input_disabled;
-      mouse_down = mouse_down && !input_disabled;
-
+      update(event.get_mouse_state(Mouse::left), local);
       was_input_active = input_active && !input_disabled;
 
       if (mouse_up && hovering)
@@ -480,7 +467,6 @@ namespace cx
       {
          if (input == "")
             text.setString(hidden);
-         on_active_end_func(*this);
       }
 
       if (!was_input_active && input_active)
@@ -490,13 +476,7 @@ namespace cx
             input = "";
             text.setString("");
          }
-         on_active_start_func(*this);
       }
-      
-      if (input_active)
-         on_active_func(*this);
-      else
-         on_not_active_func(*this);
    }
 
    // Render functions
@@ -511,36 +491,6 @@ namespace cx
    {
       window.draw(rect, shader);
       window.draw(text, shader);
-   }
-
-   // Function setter functions
-
-   void TextInput::on_active_start(const std::function<void(UIElement&)>& func)
-   {
-      on_active_start_func = (func ? func : [](UIElement&){});
-   }
-
-   void TextInput::on_active_end(const std::function<void(UIElement&)>& func)
-   {
-      on_active_end_func = (func ? func : [](UIElement&){});
-   }
-
-   void TextInput::on_active(const std::function<void(UIElement&)>& func)
-   {
-      on_active_func = (func ? func : [](UIElement&){});
-   }
-
-   void TextInput::on_not_active(const std::function<void(UIElement&)>& func)
-   {
-      on_not_active_func = (func ? func : [](UIElement&){});
-   }
-
-   void TextInput::set_input_functions(const TextInputFunctions& functions)
-   {
-      on_active_start_func = functions.on_active_start;
-      on_active_end_func = functions.on_active_end;
-      on_active_func = functions.on_active;
-      on_not_active_func = functions.on_not_active;
    }
 
    // Access functions

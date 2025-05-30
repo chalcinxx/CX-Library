@@ -19,8 +19,7 @@ namespace cx
    }
 
    Button::Button(const ButtonStyle& style,
-                  const std::string& string,
-                  const Functions& functions)
+                  const std::string& string)
    {
       if (style.font->getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -40,8 +39,7 @@ namespace cx
 
       rect.setOrigin(style.size * .5f);
       recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
+      text.setPosition(rect.getPosition());
    }
 
    Button::Button(const Color& color,
@@ -49,8 +47,7 @@ namespace cx
                   const sf::Font& font,
                   const Vec2f& size,
                   const Vec2f& position,
-                  unsigned char_size,
-                  const Functions& functions)
+                  unsigned char_size)
    {
       if (font.getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -67,15 +64,13 @@ namespace cx
 
       rect.setOrigin(size * .5f);
       recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
+      text.setPosition(rect.getPosition());
    }
 
    // Constructors after creation
 
    void Button::create(const ButtonStyle& style,
-                       const std::string& string,
-                       const Functions& functions)
+                       const std::string& string)
    {
       if (style.font->getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -95,8 +90,7 @@ namespace cx
 
       rect.setOrigin(style.size * .5f);
       recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
+      text.setPosition(rect.getPosition());
    }
 
    void Button::create(const Color& color,
@@ -104,8 +98,7 @@ namespace cx
                        const sf::Font& font,
                        const Vec2f& size,
                        const Vec2f& position,
-                       unsigned char_size,
-                       const Functions& functions)
+                       unsigned char_size)
    {
       if (font.getInfo().family.empty())
          throw std::runtime_error(errors::text::invalid_font);
@@ -122,8 +115,7 @@ namespace cx
 
       rect.setOrigin(size * .5f);
       recenter();
-      text.setPosition(rect.getPosition());  
-      set_functions(functions);
+      text.setPosition(rect.getPosition());
    }
 
    // Setter functions
