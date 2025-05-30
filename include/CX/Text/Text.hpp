@@ -66,6 +66,14 @@ namespace cx
 
       // Setter functions
 
+      /// @brief Import UIElement functions to not override them.
+      using UIElement::set_center;
+      using UIElement::set_top_left;
+      using UIElement::set_bottom_right;
+      using UIElement::set_scale;
+      using UIElement::set_size;
+      using UIElement::set_rotation;
+
       /// @brief Change string of the text.
       /// @param string New string.
       /// @param stay_still Should text stay still.

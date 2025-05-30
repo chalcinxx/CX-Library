@@ -570,6 +570,12 @@ namespace cx
       return (axis1 == 0.f ? get_axis(axis) : axis1);
    }
 
+   float EventHandler::get_axis(Key key1, Key key2, Controller key3, Controller key4) const
+   {
+      const auto axis1 = get_axis(key1, key2);
+      return (axis1 == 0.f ? get_axis(key3, key4) : axis1);
+   }
+
    // Vector functions
 
    Vec2f EventHandler::get_vector(Key key1, Key key2, Key key3, Key key4) const
@@ -611,6 +617,19 @@ namespace cx
    {
       const auto vector1 = get_vector(key1, key2, key3, key4);
       return (vector1.empty() ? get_vector(vector) : vector1);
+   }
+
+   Vec2f EventHandler::get_vector(Key key1,
+                                  Key key2,
+                                  Key key3,
+                                  Key key4,
+                                  Controller key5,
+                                  Controller key6,
+                                  Controller key7,
+                                  Controller key8) const
+   {
+      const auto vector1 = get_vector(key1, key2, key3, key4);
+      return (vector1.empty() ? get_vector(key5, key6, key7, key8) : vector1);
    }
 
    // State functions

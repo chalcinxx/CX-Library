@@ -2,6 +2,7 @@
 #define CX_RAY_RAYCAST_RESULT_HPP
 
 #include "CX/Vector/Vec2.hpp"
+#include <optional>
 
 namespace cx
 {

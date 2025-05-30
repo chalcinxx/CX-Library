@@ -233,7 +233,7 @@ namespace cx
 
    Vec5f UIElement::get_bounds() const
    {
-      return {get_top_left() - get_origin() * get_scale().abs(), get_size() * get_scale().abs(), get_rotation().degrees()};
+      return {get_top_left(), get_size() * get_scale().abs(), get_rotation().degrees()};
    }
 
    Vec5f UIElement::get_local_bounds() const
@@ -243,7 +243,7 @@ namespace cx
 
    Vec4f UIElement::get_simple_bounds() const
    {
-      return {get_top_left() - get_origin() * get_scale().abs(), get_size() * get_scale().abs()};
+      return {get_top_left(), get_size() * get_scale().abs()};
    }
 
    // Update functions

@@ -889,7 +889,7 @@ namespace cx
       /// @param angle Amount to rotate by in degrees.
       constexpr void rotate(float angle)
       {
-         direction = direction.rotate(cx::Radians::convert(angle)).normalize();
+         direction = direction.rotate(angle).normalize();
       }
 
       /// @brief Extend ray's length.
@@ -922,24 +922,23 @@ namespace cx
 
       // Render functions
 
-#ifdef CX_DEBUG
       /// @brief Render ray and origin.
       /// @param window Window to draw to.
       /// @param color Color of ray and origin.
-      inline void debugRender(sf::RenderWindow& window,
-                              const Color& color = Color(255)) const
+      inline void render(sf::RenderWindow& window,
+                         const Color& color = Color(255)) const
       {
          sf::VertexArray line (sf::LineStrip, 2);
 
          line[0].position = origin;
          line[0].color = color;
-         line[1].position = origin + direction * length;
+         line[1].position = get_end_point();
          line[1].color = color;
 
          sf::RectangleShape point (Vec2f(10.f));
          point.setOrigin(5.f, 5.f);
          point.setPosition(origin);
-         point.setRotation(origin.angle(origin + direction) * 180.f / M_PIf);
+         point.setRotation(get_rotation());
          point.setFillColor(color);
 
          window.draw(point);
@@ -947,7 +946,6 @@ namespace cx
          if (!ray_disabled)
             window.draw(line);
       }
-#endif
 
    private:
       Vec2f origin;

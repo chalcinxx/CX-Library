@@ -71,6 +71,14 @@ namespace cx
 
       // Setter functions
 
+      /// @brief Import UIElement functions to not override them.
+      using UIElement::set_center;
+      using UIElement::set_top_left;
+      using UIElement::set_bottom_right;
+      using UIElement::set_scale;
+      using UIElement::set_size;
+      using UIElement::set_rotation;
+
       /// @brief Change center position of the input.
       /// @param position New center.
       void set_center(const Vec2f& position) override;

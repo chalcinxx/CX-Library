@@ -357,6 +357,14 @@ namespace cx
       /// @return Axis value.
       float get_axis(Key key1, Key key2, ControllerAxis axis) const;
 
+      /// @brief Get input axis.
+      /// @param key1 Negative key.
+      /// @param key2 Positive key.
+      /// @param key3 Negative key.
+      /// @param key4 Negative key.
+      /// @return Axis value.
+      float get_axis(Key key1, Key key2, Controller key3, Controller key4) const;
+
       // Vector functions
 
       /// @brief Get key vector.
@@ -394,6 +402,25 @@ namespace cx
       /// @param vector Controller vector.
       /// @return Axis values.
       Vec2f get_vector(Key key1, Key key2, Key key3, Key key4, ControllerVector vector) const;
+
+      /// @brief Get input vector.
+      /// @param key1 X negative key.
+      /// @param key2 X positive key.
+      /// @param key3 Y negative key.
+      /// @param key4 Y positive key.
+      /// @param key5 X negative key.
+      /// @param key6 X positive key.
+      /// @param key7 Y negative key.
+      /// @param key8 Y positive key.
+      /// @return Axis values.
+      Vec2f get_vector(Key key1,
+                       Key key2,
+                       Key key3,
+                       Key key4,
+                       Controller key5,
+                       Controller key6,
+                       Controller key7,
+                       Controller key8) const;
 
       // State functions
 
