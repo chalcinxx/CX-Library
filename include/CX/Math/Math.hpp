@@ -16,6 +16,19 @@ namespace cx
       return (value > max ? max : (value < min ? min : value));
    }
 
+   /// @brief Clamp value between the given range. Correct incorrect ranges.
+   /// @param value Value to clamp.
+   /// @param a First range value.
+   /// @param b Second range value.
+   /// @return Clamped value.
+   template<Number T>
+   constexpr T safe_clamp(T value, T a, T b)
+   {
+      if (a > b)
+         std::swap(a, b);
+      return (value > b ? b : (value < a ? a : value));
+   }
+
    /// @brief Get absolute value of a number.
    /// @param value Number.
    /// @return Absolute value.

@@ -648,4 +648,4 @@ namespace cx
    {
       return {key, is_pressed(key), is_released(key), is_down(key)};
    }
-} // namespace cx
+}

@@ -288,22 +288,12 @@ namespace cx
 
    ElementType TextInput::get_element_type() const
    {
-      return ElementType::textInput;
+      return ElementType::text_input;
    }
 
    Vec2f TextInput::get_center() const
    {
       return rect.getPosition();
-   }
-
-   Vec2f TextInput::get_top_left() const
-   {
-      return rect.getPosition() - rect.getOrigin();
-   }
-
-   Vec2f TextInput::get_bottom_right() const
-   {
-      return rect.getPosition() + rect.getOrigin();
    }
 
    Vec2f TextInput::get_scale() const
@@ -313,15 +303,15 @@ namespace cx
 
    Vec2f TextInput::get_size() const
    {
-      return rect.getSize();
+      return get_scale().abs() * rect.getSize();
    }
 
    Vec2f TextInput::get_origin() const
    {
-      return rect.getOrigin();
+      return get_scale().abs() * rect.getOrigin();
    }
 
-   Degrees TextInput::get_rotation() const
+   Deg TextInput::get_rotation() const
    {
       return rect.getRotation();
    }

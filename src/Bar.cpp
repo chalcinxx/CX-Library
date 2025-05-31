@@ -267,16 +267,6 @@ namespace cx
       return background.getPosition();
    }
 
-   Vec2f Bar::get_top_left() const
-   {
-      return background.getPosition() - background.getOrigin();
-   }
-
-   Vec2f Bar::get_bottom_right() const
-   {
-      return background.getPosition() + background.getOrigin();
-   }
-
    Vec2f Bar::get_scale() const
    {
       return background.getScale();
@@ -284,15 +274,15 @@ namespace cx
 
    Vec2f Bar::get_size() const
    {
-      return background.getSize();
+      return get_scale().abs() * background.getSize();
    }
 
    Vec2f Bar::get_origin() const
    {
-      return background.getOrigin();
+      return get_scale().abs() * background.getOrigin();
    }
 
-   Degrees Bar::get_rotation() const
+   Deg Bar::get_rotation() const
    {
       return background.getRotation();
    }

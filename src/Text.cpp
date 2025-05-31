@@ -229,7 +229,7 @@ namespace cx
 
          text.setString(result.str() + "\n");
 
-         if (text.getGlobalBounds().height > rectSize.y)
+         if (get_height() > rectSize.y)
          {
             const std::string finalstr = std::string(truncated) + std::string(split);
             std::string final {finalstr};
@@ -363,7 +363,7 @@ namespace cx
          truncated = view.substr(0, mid);
          text.setString(std::string(truncated) + "...");
 
-         if (text.getGlobalBounds().width > maxWidth)
+         if (get_width() > maxWidth)
             right = mid;
          else
             left = mid + 1;
@@ -405,16 +405,6 @@ namespace cx
       return text.getPosition();
    }
 
-   Vec2f Text::get_top_left() const
-   {
-      return text.getPosition() - text.getOrigin();
-   }
-
-   Vec2f Text::get_bottom_right() const
-   {
-      return text.getPosition() + text.getOrigin();
-   }
-
    Vec2f Text::get_scale() const
    {
       return text.getScale();
@@ -422,15 +412,15 @@ namespace cx
 
    Vec2f Text::get_size() const
    {
-      return text.getGlobalBounds().getSize();
+      return get_scale().abs() * text.getLocalBounds().getSize();
    }
 
    Vec2f Text::get_origin() const
    {
-      return text.getOrigin();
+      return get_scale().abs() * text.getOrigin();
    }
 
-   Degrees Text::get_rotation() const
+   Deg Text::get_rotation() const
    {
       return text.getRotation();
    }
@@ -464,8 +454,7 @@ namespace cx
       window.draw(text);
    }
 
-   void Text::render(sf::RenderWindow& window,
-                     const sf::Shader* shader) const
+   void Text::render(sf::RenderWindow& window, const sf::Shader* shader) const
    {
       window.draw(text, shader);
    }

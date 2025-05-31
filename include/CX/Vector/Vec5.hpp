@@ -666,8 +666,8 @@ namespace cx
       {
          const Vec2<T> center (x + w / T(2), y + h / T(2));
          return {
-            Vec4<T>(center, Vec2<T>(T(1), T(0)).rotate(cx::Radians::convert(r)).normalize()),
-            Vec4<T>(center, Vec2<T>(T(0), T(1)).rotate(cx::Radians::convert(r)).normalize())
+            Vec4<T>(center, Vec2<T>(T(1), T(0)).rotate(cx::Rad::convert(r)).normalize()),
+            Vec4<T>(center, Vec2<T>(T(0), T(1)).rotate(cx::Rad::convert(r)).normalize())
          };
       }
 
@@ -694,11 +694,11 @@ namespace cx
       {
          const Vec2<T> position = point;
 
-         if (!is_rotated())
+         if (!rotated())
             return basic_contains(point);
 
          const Vec2<T> center = get_center();
-         const Vec2<T> trans (Vec2<T>(position - center).rotate(cx::Radians::convert(-r)));
+         const Vec2<T> trans (Vec2<T>(position - center).rotate(cx::Rad::convert(-r)));
 
          const T halfW = w / T(2);
          const T halfH = h / T(2);
@@ -714,7 +714,7 @@ namespace cx
       {
          const Vec5<T> rect = bounds;
 
-         if (!is_rotated() && !bounds.is_rotated())
+         if (!rotated() && !bounds.rotated())
             return basic_colliding(bounds);
 
          const auto axes1 {get_axes()};
@@ -886,9 +886,9 @@ namespace cx
 
       /// @brief Check if bounds are rotated.
       /// @return True if rotated.
-      constexpr bool is_rotated() const
+      constexpr bool rotated() const
       {
-         return r != T(0) && r != T(90) && r != T(180) && r != T(270);
+         return r != T(0);
       }
 
       /// @brief Compare two vectors.
@@ -1009,6 +1009,13 @@ namespace cx
       constexpr operator Vec5<U>() const
       {
          return Vec5<U>(static_cast<U>(x), static_cast<U>(y), static_cast<U>(w), static_cast<U>(h), static_cast<U>(r));
+      }
+
+      /// @brief Convert vector.
+      template<Number U = T>
+      inline sf::Rect<U> sfml() const
+      {
+         return sf::Rect<U>(static_cast<U>(x), static_cast<U>(y), static_cast<U>(w), static_cast<U>(h));
       }
    };
 

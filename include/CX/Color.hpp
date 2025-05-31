@@ -117,7 +117,7 @@ namespace cx
          return Color(255 - r, 255 - g, 255 - b, a);
       }
 
-      // Operator overloaded functions
+      // Access functions
 
       /// @brief Return value by index.
       /// @param index Index of the value.
@@ -155,6 +155,8 @@ namespace cx
          return (*this)[index];
       }
 
+      // Copy functions
+
       /// @brief Copy color.
       /// @param other Color to copy.
       /// @return Color.
@@ -179,11 +181,21 @@ namespace cx
          return *this;
       }
 
+      // Conversion functions
+
       /// @brief Convert to SFML color.
       inline operator sf::Color() const
       {
          return sf::Color(r, g, b, a);
       }
+
+      /// @brief Convert to SFML color.
+      inline sf::Color sfml() const
+      {
+         return sf::Color(r, g, b, a);
+      }
+
+      // Equality functions
 
       /// @brief Check if two colors are not equal.
       /// @param other Other color.

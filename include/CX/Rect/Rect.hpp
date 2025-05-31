@@ -26,7 +26,7 @@ namespace cx
       /// @param position Center position of the rectangle.
       /// @param color Color of the rectangle.
       Rect(const Vec2f& size,
-           const Vec2f& position = Vec2f(),
+           const Vec2f& position = {},
            const Color& color = Color(255));
 
       // Constructors after creation
@@ -40,7 +40,7 @@ namespace cx
       /// @param position Center position of the rectangle.
       /// @param color Color of the rectangle.
       void create(const Vec2f& size,
-                  const Vec2f& position = Vec2f(),
+                  const Vec2f& position = {},
                   const Color& color = Color(255));
 
       // Setter functions
@@ -107,14 +107,6 @@ namespace cx
       /// @return Center.
       Vec2f get_center() const override;
 
-      /// @brief Get top-left position of the rectangle.
-      /// @return Position.
-      Vec2f get_top_left() const override;
-
-      /// @brief Get bottom-right position of the rectangle.
-      /// @return Position.
-      Vec2f get_bottom_right() const override;
-
       /// @brief Get scale of the rectangle.
       /// @return Scale.
       Vec2f get_scale() const override;
@@ -129,7 +121,7 @@ namespace cx
 
       /// @brief Get rotation of the rectangle.
       /// @return Rotation in degrees.
-      Degrees get_rotation() const override;
+      Deg get_rotation() const override;
 
       /// @brief Get texture of the rectangle.
       /// @return Texture.

@@ -192,14 +192,6 @@ namespace cx
       /// @return Center.
       Vec2f get_center() const override;
 
-      /// @brief Get top-left position of the input.
-      /// @return Position.
-      Vec2f get_top_left() const override;
-
-      /// @brief Get bottom-right position of the input.
-      /// @return Position.
-      Vec2f get_bottom_right() const override;
-
       /// @brief Get scale of the input.
       /// @return Scale.
       Vec2f get_scale() const override;
@@ -214,7 +206,7 @@ namespace cx
 
       /// @brief Get rotation of the input.
       /// @return Rotation in degrees.
-      Degrees get_rotation() const override;
+      Deg get_rotation() const override;
 
       /// @brief Get texture of the input.
       /// @return Texture.

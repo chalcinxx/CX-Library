@@ -38,33 +38,30 @@ namespace cx
       static constexpr float degree_conversion_constant = 180.f / pi;
    };
 
-   struct Radians;
-   struct Degrees;
-
    /// @brief Angle struct in degrees.
-   struct Degrees : public Angle
+   struct Deg : public Angle
    {
    public:
 
       /// @brief Create default angle.'
-      constexpr Degrees() = default;
+      constexpr Deg() = default;
 
       /// @brief Create an angle.
       /// @param angle Angle in degrees.
-      constexpr Degrees(float angle)
+      constexpr Deg(float angle)
          : angle(angle) {}
 
       /// @brief Create an angle.
       /// @param angle Angle.
-      constexpr Degrees(const Angle& angle)
+      constexpr Deg(const Angle& angle)
          : angle(angle.degrees()) {}
 
       /// @brief Convert the given angle in radians to degrees.
-      /// @param angle Angle in radians.
+      /// @param radians Angle in radians.
       /// @return Angle in degrees.
-      constexpr static float convert(float angle)
+      constexpr static float convert(float radians)
       {
-         return angle * radian_conversion_constant;
+         return radians * degree_conversion_constant;
       }
 
       /// @brief Convert the angle to degrees.
@@ -119,29 +116,29 @@ namespace cx
    };
 
    /// @brief Angle struct in radians.
-   struct Radians : public Angle
+   struct Rad : public Angle
    {
    public:
 
       /// @brief Create default angle.
-      constexpr Radians() = default;
+      constexpr Rad() = default;
 
       /// @brief Create an angle.
       /// @param angle Angle in radians.
-      constexpr Radians(float angle)
+      constexpr Rad(float angle)
          : angle(angle) {}
       
       /// @brief Create an angle.
       /// @param angle Angle.
-      constexpr Radians(const Angle& angle)
+      constexpr Rad(const Angle& angle)
          : angle(angle.radians()) {}
 
       /// @brief Convert the given angle in degrees to radians.
-      /// @param angle Angle in degrees.
+      /// @param degrees Angle in degrees.
       /// @return Angle in radians.
-      constexpr static float convert(float angle)
+      constexpr static float convert(float degrees)
       {
-         return angle * degree_conversion_constant;
+         return degrees * radian_conversion_constant;
       }
 
       /// @brief Convert the angle to degrees.

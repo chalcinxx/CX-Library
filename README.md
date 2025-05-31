@@ -4,7 +4,7 @@
 - [What is CX?](#what-is-cx)
 - [How to build the library](#how-to-build-the-library)
 - [How to include the library in your projects](#how-to-include-the-library-in-your-projects)
-- [Credits](#credits)
+- [Dependencies](#dependencies)
 - [Contributors](#contributors)
 - [Links](#links)
 

@@ -1,5 +1,7 @@
 #include "CX/UIElement/UIElement.hpp"
 
+#include "CX/Circle/Circle.hpp"
+
 namespace cx
 {
    // Set default styles
@@ -34,21 +36,31 @@ namespace cx
 
    bool UIElement::colliding(const Vec4f& bounds) const
    {
+      if (get_element_type() == ElementType::circle)
+         return static_cast<const Circle*>(this)->get_circle_bounds().colliding(bounds);
       return bounds.colliding(get_simple_bounds());
    }
 
    bool UIElement::colliding(const Vec5f& bounds) const
    {
+      if (get_element_type() == ElementType::circle)
+         return static_cast<const Circle*>(this)->get_circle_bounds().colliding(bounds);
       return bounds.colliding(get_bounds());
    }
 
    bool UIElement::colliding(const UIElement& other) const
    {
+      if (get_element_type() == ElementType::circle && other.get_element_type() == ElementType::circle)
+         return static_cast<const Circle*>(this)->get_circle_bounds().colliding(static_cast<const Circle*>(this)->get_circle_bounds());
+      else if (get_element_type() == ElementType::circle || other.get_element_type() == ElementType::circle)
+         return static_cast<const Circle*>(this)->get_circle_bounds().colliding(other.get_bounds());
       return other.get_bounds().colliding(get_bounds());
    }
 
    bool UIElement::contains(const Vec2f& point) const
    {
+      if (get_element_type() == ElementType::circle)
+         return static_cast<const Circle*>(this)->get_circle_bounds().contains(point);
       return get_bounds().contains(point);
    }
 
@@ -181,6 +193,11 @@ namespace cx
       return get_center().y;
    }
 
+   Vec2f UIElement::get_top_left() const
+   {
+      return get_center() - get_origin();
+   }
+
    float UIElement::get_left() const
    {
       return get_top_left().x;
@@ -189,6 +206,11 @@ namespace cx
    float UIElement::get_top() const
    {
       return get_top_left().y;
+   }
+
+   Vec2f UIElement::get_bottom_right() const
+   {
+      return get_center() + get_origin();
    }
 
    float UIElement::get_right() const
@@ -233,17 +255,17 @@ namespace cx
 
    Vec5f UIElement::get_bounds() const
    {
-      return {get_top_left(), get_size() * get_scale().abs(), get_rotation().degrees()};
+      return {get_top_left(), get_size(), get_rotation().degrees()};
    }
 
    Vec5f UIElement::get_local_bounds() const
    {
-      return {get_top_left(), get_size(), get_rotation().degrees()};
+      return {get_center() - get_origin() / get_scale().abs(), get_size() / get_scale().abs(), get_rotation().degrees()};
    }
 
    Vec4f UIElement::get_simple_bounds() const
    {
-      return {get_top_left(), get_size() * get_scale().abs()};
+      return {get_top_left(), get_size()};
    }
 
    // Update functions
@@ -343,7 +365,7 @@ namespace cx
    void UIElement::update_state(const MouseState& state, bool local)
    {
       was_hover = hovering;
-      hovering = (local ? get_local_bounds() : get_bounds()).contains(state.position);
+      hovering = (local ? get_local_bounds().contains(state.position) : contains(state.position));
 
       const bool is_mouse_down = (hovering && state.is_down);
       mouse_up = !is_mouse_down && mouse_down && hovering;

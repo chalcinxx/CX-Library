@@ -274,17 +274,9 @@ namespace cx
       /// @return Center.
       Vec2f get_knob_center() const;
 
-      /// @brief Get top-left position of the slider.
-      /// @return Position.
-      Vec2f get_top_left() const override;
-
       /// @brief Get top-left position of the knob.
       /// @return Position.
       Vec2f get_knob_top_left() const;
-
-      /// @brief Get bottom-right position of the slider.
-      /// @return Position.
-      Vec2f get_bottom_right() const override;
 
       /// @brief Get bottom-right position of the knob.
       /// @return Position.
@@ -332,7 +324,7 @@ namespace cx
 
       /// @brief Get rotation of the slider.
       /// @return Rotation in degrees.
-      Degrees get_rotation() const override;
+      Deg get_rotation() const override;
 
       /// @brief Get texture of the background.
       /// @return Texture.

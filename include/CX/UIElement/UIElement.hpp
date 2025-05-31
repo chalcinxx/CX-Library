@@ -209,7 +209,7 @@ namespace cx
 
       /// @brief Get top-left position of the element.
       /// @return Position.
-      virtual Vec2f get_top_left() const = 0;
+      Vec2f get_top_left() const;
 
       /// @brief Get X position of the element.
       /// @return X position.
@@ -221,7 +221,7 @@ namespace cx
 
       /// @brief Get right-bottom position of the element.
       /// @return Position.
-      virtual Vec2f get_bottom_right() const = 0;
+      Vec2f get_bottom_right() const;
 
       /// @brief Get right position of the element.
       /// @return Right position.
@@ -281,7 +281,7 @@ namespace cx
 
       /// @brief Get rotation of the element.
       /// @return Rotation in degrees.
-      virtual Degrees get_rotation() const = 0;
+      virtual Deg get_rotation() const = 0;
 
       /// @brief Get color of the element.
       /// @return Color.

@@ -129,16 +129,6 @@ namespace cx
       return rect.getPosition();
    }
 
-   Vec2f Rect::get_top_left() const
-   {
-      return rect.getPosition() - rect.getOrigin();
-   }
-
-   Vec2f Rect::get_bottom_right() const
-   {
-      return rect.getPosition() + rect.getOrigin();
-   }
-
    Vec2f Rect::get_scale() const
    {
       return rect.getScale();
@@ -146,17 +136,17 @@ namespace cx
 
    Vec2f Rect::get_size() const
    {
-      return rect.getSize();
+      return get_scale().abs() * rect.getSize();
    }
 
    Vec2f Rect::get_origin() const
    {
-      return rect.getOrigin();
+      return get_scale().abs() * rect.getOrigin();
    }
 
-   Degrees Rect::get_rotation() const
+   Deg Rect::get_rotation() const
    {
-      return Degrees(rect.getRotation());
+      return rect.getRotation();
    }
 
    const sf::Texture* Rect::get_texture() const
@@ -198,8 +188,7 @@ namespace cx
       window.draw(rect);
    }
 
-   void Rect::render(sf::RenderWindow& window,
-                     const sf::Shader* shader) const
+   void Rect::render(sf::RenderWindow& window, const sf::Shader* shader) const
    {
       window.draw(rect, shader);
    }

@@ -565,8 +565,7 @@ namespace cx
          window.draw(particle->particle);
    }
 
-   void ParticleManager::render(sf::RenderWindow& window,
-                                const sf::Shader* shader) const
+   void ParticleManager::render(sf::RenderWindow& window, const sf::Shader* shader) const
    {
       for (const auto& particle : particles)
          window.draw(particle->particle, shader);

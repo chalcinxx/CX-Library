@@ -245,16 +245,6 @@ namespace cx
       return rect.getPosition();
    }
 
-   Vec2f Button::get_top_left() const
-   {
-      return rect.getPosition() - rect.getOrigin();
-   }
-
-   Vec2f Button::get_bottom_right() const
-   {
-      return rect.getPosition() + rect.getOrigin();
-   }
-
    Vec2f Button::get_scale() const
    {
       return rect.getScale();
@@ -262,15 +252,15 @@ namespace cx
 
    Vec2f Button::get_size() const
    {
-      return rect.getSize();
+      return get_scale().abs() * rect.getSize();
    }
 
    Vec2f Button::get_origin() const
    {
-      return rect.getOrigin();
+      return get_scale().abs() * rect.getOrigin();
    }
 
-   Degrees Button::get_rotation() const
+   Deg Button::get_rotation() const
    {
       return rect.getRotation();
    }

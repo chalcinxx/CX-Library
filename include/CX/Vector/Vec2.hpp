@@ -5,6 +5,7 @@
 #include "CX/Errors.hpp"
 #include "CX/Math/Angle.hpp"
 #include "CX/Math/Random.hpp"
+#include <stdexcept>
 
 namespace cx
 {
@@ -428,18 +429,18 @@ namespace cx
       /// @param other Other vector.
       /// @return Angle in radians.
       template<Number U>
-      constexpr Radians angle(const Vec2<U>& other) const
+      constexpr Rad angle(const Vec2<U>& other) const
       {
-         return cx::Radians(-std::atan2(static_cast<T>(other.x) - x, static_cast<T>(other.y) - y) + M_PIf);
+         return cx::Rad(-std::atan2(static_cast<T>(other.x) - x, static_cast<T>(other.y) - y) + M_PIf);
       }
 
       /// @brief Get angle between two vectors.
       /// @param other Other vector.
       /// @return Angle in radians.
       template<Number U>
-      constexpr Radians angle(const sf::Vector2<U>& other) const
+      constexpr Rad angle(const sf::Vector2<U>& other) const
       {
-         return cx::Radians(-std::atan2(static_cast<T>(other.x) - x, static_cast<T>(other.y) - y) + M_PIf);
+         return cx::Rad(-std::atan2(static_cast<T>(other.x) - x, static_cast<T>(other.y) - y) + M_PIf);
       }
 
       /// @brief Get distance between two vectors.
@@ -461,7 +462,7 @@ namespace cx
       {
          const auto nx = x - static_cast<T>(other.x);
          const auto ny = y - static_cast<T>(other.y);
-         return std::sqrt(nx * nx, ny * ny);
+         return std::sqrt(nx * nx + ny * ny);
       }
 
       /// @brief Get distance squared between two vectors.
@@ -472,7 +473,7 @@ namespace cx
       {
          const auto nx = x - static_cast<T>(other.x);
          const auto ny = y - static_cast<T>(other.y);
-         return nx * nx, ny * ny;
+         return nx * nx + ny * ny;
       }
 
       /// @brief Get distance squared between two vectors.
@@ -483,7 +484,7 @@ namespace cx
       {
          const auto nx = x - static_cast<T>(other.x);
          const auto ny = y - static_cast<T>(other.y);
-         return nx * nx, ny * ny;
+         return nx * nx + ny * ny;
       }
 
       /// @brief Project vector onto the other.
@@ -579,14 +580,27 @@ namespace cx
       /// @return Rotated vector.
       constexpr Vec2<T> rotate(const Angle& angle) const
       {
-         const auto radians = angle.radians();
-         if (radians == 0.f)
-            return *this;
+         return rotate(angle.radians());
+      }
 
-         const auto sin = std::sin(radians);
-         const auto cos = std::cos(radians);
+      /// @brief Rotate vector relative to a point.
+      /// @param point Point.
+      /// @param angle Angle in radians.
+      /// @return Rotated vector relative to a point.
+      template<Floating U, Number Y>
+      constexpr Vec2<T> rotate_relative_to(const Vec2<Y>& point, U radians) const
+      {
+         return point + (*this - point).rotate(radians);
+      }
 
-         return Vec2<T>(x * cos - y * sin, x * sin + y * cos);
+      /// @brief Rotate vector relative to a point.
+      /// @param point Point.
+      /// @param angle Angle.
+      /// @return Rotated vector relative to a point.
+      template<Number Y>
+      constexpr Vec2<T> rotate_relative_to(const Vec2<Y>& point, const Angle& angle) const
+      {
+         return rotate_relative_to(point, angle.radians());
       }
 
       /// @brief Get direction to other vector.
@@ -778,6 +792,13 @@ namespace cx
       constexpr operator Vec2<U>() const
       {
          return Vec2<U>(static_cast<U>(x), static_cast<U>(y));
+      }
+
+      /// @brief Convert vector.
+      template<Number U = T>
+      inline sf::Vector2<U> sfml() const
+      {
+         return sf::Vector2<U>(static_cast<U>(x), static_cast<U>(y));
       }
    };
 

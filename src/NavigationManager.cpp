@@ -508,7 +508,7 @@ namespace cx
       changed = (previous != cindex);
       MouseState state = event.get_mouse_state(mousebutton);
 
-      if (changed && is_valid_index(previous) && get_element(previous).get_element_type() == ElementType::textInput)
+      if (changed && is_valid_index(previous) && get_element(previous).get_element_type() == ElementType::text_input)
       {
          auto& input = static_cast<TextInput&>(get_element(previous));
          input.set_active(false);
@@ -518,7 +518,7 @@ namespace cx
       {
          if (eIndex != cindex)
          {
-            if (element.get_element_type() != ElementType::textInput)
+            if (element.get_element_type() != ElementType::text_input)
                element.update(state, local);
             else
                (static_cast<TextInput&>(element)).update_input(event, local);
@@ -528,7 +528,7 @@ namespace cx
          const Vec2f originalPos = state.position;
          const bool originalDown = state.is_down;
 
-         if (element.get_element_type() == ElementType::textInput)
+         if (element.get_element_type() == ElementType::text_input)
          {
             auto& input = static_cast<TextInput&>(element);
             bool active = input.is_active();
@@ -553,7 +553,7 @@ namespace cx
             state.position = element.get_center();
          }
 
-         if (element.get_element_type() != ElementType::textInput)
+         if (element.get_element_type() != ElementType::text_input)
             element.update(state, local);
 
          state.position = originalPos;

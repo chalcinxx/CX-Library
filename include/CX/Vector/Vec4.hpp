@@ -892,6 +892,13 @@ namespace cx
       {
          return Vec4<U>(static_cast<U>(x), static_cast<U>(y), static_cast<U>(w), static_cast<U>(h));
       }
+
+      /// @brief Convert vector.
+      template<Number U = T>
+      inline sf::Rect<U> sfml() const
+      {
+         return sf::Rect<U>(static_cast<U>(x), static_cast<U>(y), static_cast<U>(w), static_cast<U>(h));
+      }
    };
 
    using Vec4f = Vec4<float>;    ///< @brief 4 value container.

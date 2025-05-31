@@ -432,24 +432,14 @@ namespace cx
       return knob.getPosition();
    }
 
-   Vec2f Slider::get_top_left() const
-   {
-      return background.getPosition() - background.getOrigin();
-   }
-
    Vec2f Slider::get_knob_top_left() const
    {
-      return knob.getPosition() - knob.getOrigin();
-   }
-
-   Vec2f Slider::get_bottom_right() const
-   {
-      return background.getPosition() + background.getOrigin();
+      return knob.getPosition() - get_knob_origin().sfml();
    }
 
    Vec2f Slider::get_knob_bottom_right() const
    {
-      return knob.getPosition() + knob.getOrigin();
+      return knob.getPosition() + get_knob_origin().sfml();
    }
 
    Vec2f Slider::get_scale() const
@@ -459,22 +449,22 @@ namespace cx
 
    Vec2f Slider::get_size() const
    {
-      return background.getSize();
+      return get_scale().abs() * background.getSize();
    }
 
    Vec2f Slider::get_knob_size() const
    {
-      return knob.getSize();
+      return get_scale().abs() * knob.getSize();
    }
 
    Vec2f Slider::get_origin() const
    {
-      return background.getOrigin();
+      return get_scale().abs() * background.getOrigin();
    }
 
    Vec2f Slider::get_knob_origin() const
    {
-      return knob.getOrigin();
+      return get_scale().abs() * knob.getOrigin();
    }
 
    float Slider::get_knob_origin_x() const
@@ -489,30 +479,20 @@ namespace cx
 
    Vec5f Slider::get_knob_bounds() const
    {
-      return Vec5f(
-         Vec2f(knob.getPosition()) - Vec2f(knob.getOrigin())
-         * Vec2f(knob.getScale()).abs(), Vec2f(knob.getSize())
-         * Vec2f(knob.getScale()).abs(), knob.getRotation()
-      );
+      return {get_knob_top_left(), get_knob_size(), get_rotation().degrees()};
    }
 
    Vec5f Slider::get_knob_local_bounds() const
    {
-      return Vec5f(
-         knob.getPosition() - knob.getOrigin(), knob.getSize(), knob.getRotation()
-      );
+      return {get_knob_center() - get_knob_origin() / get_scale().abs(), get_knob_size() / get_scale().abs(), get_rotation().degrees()};
    }
 
    Vec4f Slider::get_knob_simple_bounds() const
    {
-      return Vec4f(
-         Vec2f(knob.getPosition()) - Vec2f(knob.getOrigin())
-         * Vec2f(knob.getScale()).abs(), Vec2f(knob.getSize())
-         * Vec2f(knob.getScale()).abs()
-      );
+      return {get_knob_top_left(), get_knob_size()};
    }
 
-   Degrees Slider::get_rotation() const
+   Deg Slider::get_rotation() const
    {
       return background.getRotation();
    }
