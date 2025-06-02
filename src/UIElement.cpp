@@ -52,8 +52,10 @@ namespace cx
    {
       if (get_element_type() == ElementType::circle && other.get_element_type() == ElementType::circle)
          return static_cast<const Circle*>(this)->get_circle_bounds().colliding(static_cast<const Circle*>(this)->get_circle_bounds());
-      else if (get_element_type() == ElementType::circle || other.get_element_type() == ElementType::circle)
+      else if (get_element_type() == ElementType::circle)
          return static_cast<const Circle*>(this)->get_circle_bounds().colliding(other.get_bounds());
+      else if (other.get_element_type() == ElementType::circle)
+         return static_cast<const Circle&>(other).get_circle_bounds().colliding(get_bounds());
       return other.get_bounds().colliding(get_bounds());
    }
 
@@ -358,6 +360,11 @@ namespace cx
    void UIElement::on_update(const std::function<void(UIElement&)>& func)
    {
       on_update_func = std::make_shared<std::function<void(UIElement&)>>(func ? func : [](UIElement&){});
+   }
+
+   void UIElement::on_update(const Functions& func)
+   {
+      on_update(*func.func);
    }
 
    // Update functions

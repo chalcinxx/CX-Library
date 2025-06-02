@@ -346,6 +346,10 @@ namespace cx
       /// @param func Function.
       void on_update(const std::function<void(UIElement&)>& func);
 
+      /// @brief Set the function that is called after updating the element.
+      /// @param func Function.
+      void on_update(const Functions& func);
+
       // Update getter functions
 
       /// @brief Check if element is being hovered on.

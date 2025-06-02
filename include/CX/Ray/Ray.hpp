@@ -41,7 +41,7 @@ namespace cx
       constexpr Ray(const Vec2f& origin, float angle, float length)
          : origin(origin), direction(Vec2f()), length(std::abs(length))
       {
-         const float rad = cx::Radians::convert(angle);
+         const float rad = Rad::convert(angle);
          direction = Vec2f(std::cos(rad), std::sin(rad)).normalize();
       }
 
@@ -79,7 +79,7 @@ namespace cx
       /// @param length Length of ray.
       constexpr void create(const Vec2f& origin, float angle, float length)
       {
-         const float rad = cx::Radians::convert(angle);
+         const float rad = Rad::convert(angle);
          this->direction = Vec2f(std::cos(rad), std::sin(rad)).normalize();
          this->origin = origin;
          this->length = std::abs(length);
@@ -132,7 +132,7 @@ namespace cx
       /// @return True if colliding.
       constexpr bool colliding(const Vec5f& bounds) const
       {
-         if (!bounds.is_rotated())
+         if (!bounds.rotated())
             return colliding(bounds.un_rotated());
 
          if (direction.empty() || ray_disabled)
@@ -230,7 +230,7 @@ namespace cx
       /// @return Collision point if colliding.
       constexpr std::optional<Vec2f> collision_point(const Vec5f& bounds) const
       {
-         if (!bounds.is_rotated())
+         if (!bounds.rotated())
             return collision_point(bounds.un_rotated());
 
          if (direction.empty() || ray_disabled)
@@ -337,7 +337,7 @@ namespace cx
       /// @return Exit point if colliding.
       constexpr std::optional<Vec2f> exit_point(const Vec5f& bounds) const
       {
-         if (!bounds.is_rotated())
+         if (!bounds.rotated())
             return exit_point(bounds.un_rotated());
 
          if (direction.empty() || ray_disabled)
@@ -457,7 +457,7 @@ namespace cx
       /// @return Reflected ray.
       constexpr std::optional<Ray> reflect(const Vec5f& bounds) const
       {
-         if (!bounds.is_rotated())
+         if (!bounds.rotated())
             return reflect(bounds.un_rotated());
 
          if (direction.empty() || ray_disabled)
@@ -612,13 +612,13 @@ namespace cx
       /// @return Raycast result.
       constexpr RaycastResult raycast(const Vec5f& bounds) const
       {
-         if (!bounds.is_rotated())
+         if (!bounds.rotated())
             return raycast(bounds.un_rotated());
 
          if (direction.empty() || ray_disabled)
             return RaycastResult{};
 
-         const float rad = cx::Radians::convert(-bounds.r);
+         const float rad = Rad::convert(-bounds.r);
          const Vec2f r_origin = (origin - bounds.get_center()).rotate(rad);
          const Vec2f r_direction = direction.rotate(rad).normalize();
 
@@ -799,7 +799,7 @@ namespace cx
       /// @param angle New rotation in degrees.
       constexpr void set_rotation(float angle)
       {
-         const float rad = cx::Radians::convert(angle);
+         const float rad = Rad::convert(angle);
          const float last = origin.angle(origin + direction);
          direction = direction.rotate(rad - last).normalize();
       }
