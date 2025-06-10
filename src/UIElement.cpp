@@ -1,9 +1,14 @@
-#include "CX/UIElement/UIElement.hpp"
-
 #include "CX/Circle/Circle.hpp"
 
 namespace cx
 {
+   // Circle functions
+
+   CircleBounds Circle::get_circle_bounds() const
+   {
+      return {cx::abs(circle.getRadius()), circle.getPosition(), Vec2f(circle.getScale()).abs(), circle.getRotation()};
+   }
+   
    // Set default styles
 
    std::unique_ptr<Functions> Functions::style1_t;
@@ -98,6 +103,11 @@ namespace cx
       set_center(Vec2f(get_center_x(), center_y));
    }
 
+   void UIElement::set_top_left(const Vec2f& position)
+   {
+      set_center(position + get_origin());
+   }
+
    void UIElement::set_top_left(float left, float top)
    {
       set_top_left(Vec2f(left, top));
@@ -116,6 +126,11 @@ namespace cx
    void UIElement::set_top(float top)
    {
       set_top_left(Vec2f(get_left(), top));
+   }
+
+   void UIElement::set_bottom_right(const Vec2f& position)
+   {
+      set_center(position - get_origin());
    }
 
    void UIElement::set_bottom_right(float right, float bottom)
@@ -181,6 +196,11 @@ namespace cx
    void UIElement::set_rotation(const Angle& angle)
    {
       set_rotation(angle.degrees());
+   }
+
+   void UIElement::set_opacity(unsigned char opacity)
+   {
+      set_color(Color(get_color(), opacity));
    }
 
    // Getter functions
@@ -270,6 +290,11 @@ namespace cx
       return {get_top_left(), get_size()};
    }
 
+   unsigned char UIElement::get_opacity() const
+   {
+      return get_color().a;
+   }
+
    // Update functions
 
    void UIElement::flip_horizontally()
@@ -284,7 +309,7 @@ namespace cx
 
    void UIElement::move(const Vec2f& offset)
    {
-      set_top_left(get_top_left() + offset);
+      set_center(get_center() + offset);
    }
 
    void UIElement::move(float offset_x, float offset_y)

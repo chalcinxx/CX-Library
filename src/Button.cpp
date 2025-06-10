@@ -15,7 +15,6 @@ namespace cx
    Button::Button()
    {
       text.setOutlineColor(Color(0));
-      rect.setOutlineColor(Color(0));
    }
 
    Button::Button(const ButtonStyle& style,
@@ -34,8 +33,6 @@ namespace cx
       rect.setSize(style.size);
       rect.setTexture(style.texture.get());
       rect.setFillColor(style.color);
-      rect.setOutlineThickness(style.outline_thickness);
-      rect.setOutlineColor(style.outline_color);
 
       rect.setOrigin(style.size * .5f);
       recenter();
@@ -60,7 +57,6 @@ namespace cx
       rect.setPosition(position);
       rect.setSize(size);
       rect.setFillColor(color);
-      rect.setOutlineColor(Color(0));
 
       rect.setOrigin(size * .5f);
       recenter();
@@ -85,8 +81,6 @@ namespace cx
       rect.setSize(style.size);
       rect.setTexture(style.texture.get());
       rect.setFillColor(style.color);
-      rect.setOutlineThickness(style.outline_thickness);
-      rect.setOutlineColor(style.outline_color);
 
       rect.setOrigin(style.size * .5f);
       recenter();
@@ -111,7 +105,6 @@ namespace cx
       rect.setPosition(position);
       rect.setSize(size);
       rect.setFillColor(color);
-      rect.setOutlineColor(Color(0));
 
       rect.setOrigin(size * .5f);
       recenter();
@@ -124,18 +117,6 @@ namespace cx
    {
       rect.setPosition(position);
       text.setPosition(position);
-   }
-
-   void Button::set_top_left(const Vec2f& position)
-   {
-      rect.setPosition(position + rect.getOrigin());
-      text.setPosition(rect.getPosition());
-   }
-
-   void Button::set_bottom_right(const Vec2f& position)
-   {
-      rect.setPosition(position - rect.getOrigin());
-      text.setPosition(rect.getPosition());
    }
 
    void Button::set_scale(const Vec2f& scale)
@@ -172,16 +153,6 @@ namespace cx
       rect.setFillColor(color);
    }
 
-   void Button::set_outline_color(const Color& color)
-   {
-      rect.setOutlineColor(color);
-   }
-
-   void Button::set_outline_thickness(float thickness)
-   {
-      rect.setOutlineThickness(thickness);
-   }
-
    void Button::set_string(const std::string& string)
    {
       text.setString(string);
@@ -211,6 +182,11 @@ namespace cx
    void Button::set_text_color(const Color& color)
    {
       text.setFillColor(color);
+   }
+
+   void Button::set_text_opacity(unsigned char opacity)
+   {
+      text.setFillColor(Color(get_text_color(), opacity));
    }
 
    void Button::set_text_outline_color(const Color& color)
@@ -280,16 +256,6 @@ namespace cx
       return rect.getFillColor();
    }
 
-   Color Button::get_outline_color() const
-   {
-      return rect.getOutlineColor();
-   }
-
-   float Button::get_outline_thickness() const
-   {
-      return rect.getOutlineThickness();
-   }
-
    std::string Button::get_string() const
    {
       return text.getString();
@@ -313,6 +279,11 @@ namespace cx
    Color Button::get_text_color() const
    {
       return text.getFillColor();
+   }
+
+   unsigned char Button::get_text_opacity() const
+   {
+      return text.getFillColor().a;
    }
 
    Color Button::get_text_outline_color() const

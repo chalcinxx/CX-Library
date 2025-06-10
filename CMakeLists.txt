@@ -16,6 +16,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # Add source files
 add_library(cx STATIC
+   src/Plane.cpp
    src/Rect.cpp
    src/Sprite.cpp
    src/Text.cpp

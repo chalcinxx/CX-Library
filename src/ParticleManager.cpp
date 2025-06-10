@@ -245,7 +245,7 @@ namespace cx
       color_start = color_end = color;
    }
 
-   void ParticleManager::setColor(const Color& start_color, const Color& end_color)
+   void ParticleManager::set_color(const Color& start_color, const Color& end_color)
    {
       color_start = start_color;
       color_end = end_color;

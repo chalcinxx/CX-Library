@@ -52,8 +52,6 @@ namespace cx
 
       /// @brief Import UIElement functions to not override them.
       using UIElement::set_center;
-      using UIElement::set_top_left;
-      using UIElement::set_bottom_right;
       using UIElement::set_scale;
       using UIElement::set_size;
       using UIElement::set_rotation;
@@ -61,14 +59,6 @@ namespace cx
       /// @brief Change center position of the sprite.
       /// @param position New center.
       void set_center(const Vec2f& position) override;
-
-      /// @brief Change top-left position of the sprite.
-      /// @param position New position.
-      void set_top_left(const Vec2f& position) override;
-
-      /// @brief Change bottom-right position of the sprite.
-      /// @param position New position.
-      void set_bottom_right(const Vec2f& position) override;
 
       /// @brief Change scale of the sprite.
       /// @param scale New scale.
@@ -93,14 +83,6 @@ namespace cx
       /// @brief Change color of the sprite.
       /// @param color New color.
       void set_color(const Color& color) override;
-
-      /// @brief Change outline color of the sprite.
-      /// @param color New outline color.
-      void set_outline_color(const Color& color) override;
-
-      /// @brief Change outline thickness of the sprite.
-      /// @param thickness New outline thickness.
-      void set_outline_thickness(float thickness) override;
 
       // Getter functions
 
@@ -139,14 +121,6 @@ namespace cx
       /// @brief Get color of the sprite.
       /// @return Color.
       Color get_color() const override;
-
-      /// @brief Get outline color of the sprite.
-      /// @return Outline color.
-      Color get_outline_color() const override;
-
-      /// @brief Get outline thickness of the sprite.
-      /// @return Outline thickness.
-      float get_outline_thickness() const override;
 
       // Update functions
 

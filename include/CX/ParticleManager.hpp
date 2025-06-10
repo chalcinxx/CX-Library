@@ -245,7 +245,7 @@ namespace cx
       /// @brief Set particle color.
       /// @param start_color Particle starting color.
       /// @param end_color Color at the end of particle lifetime.
-      void setColor(const Color& start_color, const Color& end_color);
+      void set_color(const Color& start_color, const Color& end_color);
 
       /// @brief Set particle properties.
       /// @param lifetime Particle lifetime in seconds.

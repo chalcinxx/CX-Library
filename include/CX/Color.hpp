@@ -48,8 +48,20 @@ namespace cx
       
       /// @brief Copy a color.
       /// @param other Color to copy.
+      /// @param alpha Alpha intensity.
+      constexpr Color(const Color& other, uint8 alpha)
+         : r(other.r), g(other.g), b(other.b), a(alpha) {}
+      
+      /// @brief Copy a color.
+      /// @param other Color to copy.
       constexpr Color(const sf::Color& other)
          : r(other.r), g(other.g), b(other.b), a(other.a) {}
+      
+      /// @brief Copy a color.
+      /// @param other Color to copy.
+      /// @param alpha Alpha intensity.
+      constexpr Color(const sf::Color& other, uint8 alpha)
+         : r(other.r), g(other.g), b(other.b), a(alpha) {}
       
       // Constructors after creation
 
@@ -87,12 +99,34 @@ namespace cx
       
       /// @brief Copy a color.
       /// @param other Color to copy.
+      /// @param alpha Alpha intensity.
+      constexpr void create(const Color& other, uint8 alpha)
+      {
+         r = other.r;
+         g = other.g;
+         b = other.b;
+         a = alpha;
+      }
+      
+      /// @brief Copy a color.
+      /// @param other Color to copy.
       constexpr void create(const sf::Color& other)
       {
          r = other.r;
          g = other.g;
          b = other.b;
          a = other.a;
+      }
+
+      /// @brief Copy a color.
+      /// @param other Color to copy.
+      /// @param alpha Alpha intensity.
+      constexpr void create(const sf::Color& other, uint8 alpha)
+      {
+         r = other.r;
+         g = other.g;
+         b = other.b;
+         a = alpha;
       }
 
       // Update functions

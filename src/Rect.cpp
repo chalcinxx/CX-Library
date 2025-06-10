@@ -10,18 +10,13 @@ namespace cx
 
    // Constructors
 
-   Rect::Rect()
-   {
-      rect.setOutlineColor(Color(0));
-   }
+   Rect::Rect() {}
 
    Rect::Rect(const RectStyle& style)
    {
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
       rect.setFillColor(style.color);
-      rect.setOutlineColor(style.outline_color);
-      rect.setOutlineThickness(style.outline_thickness);
       rect.setTexture(style.texture.get());
    }
 
@@ -33,7 +28,6 @@ namespace cx
       rect.setSize(size);
       rect.setOrigin(size * .5f);
       rect.setFillColor(color);
-      rect.setOutlineColor(Color(0));
    }
 
    // Constructors after creation
@@ -43,8 +37,6 @@ namespace cx
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
       rect.setFillColor(style.color);
-      rect.setOutlineColor(style.outline_color);
-      rect.setOutlineThickness(style.outline_thickness);
       rect.setTexture(style.texture.get());
    }
 
@@ -56,7 +48,6 @@ namespace cx
       rect.setSize(size);
       rect.setOrigin(size * .5f);
       rect.setFillColor(color);
-      rect.setOutlineColor(Color(0));
    }
 
    // Setter functions
@@ -64,16 +55,6 @@ namespace cx
    void Rect::set_center(const Vec2f& position)
    {
       rect.setPosition(position);
-   }
-
-   void Rect::set_top_left(const Vec2f& position)
-   {
-      rect.setPosition(position + rect.getOrigin());
-   }
-
-   void Rect::set_bottom_right(const Vec2f& position)
-   {
-      rect.setPosition(position - rect.getOrigin());
    }
 
    void Rect::set_scale(const Vec2f& scale)
@@ -105,16 +86,6 @@ namespace cx
    void Rect::set_color(const Color& color)
    {
       rect.setFillColor(color);
-   }
-
-   void Rect::set_outline_color(const Color& color)
-   {
-      rect.setOutlineColor(color);
-   }
-
-   void Rect::set_outline_thickness(float thickness)
-   {
-      rect.setOutlineThickness(thickness);
    }
 
    // Getter functions
@@ -162,16 +133,6 @@ namespace cx
    Color Rect::get_color() const
    {
       return rect.getFillColor();
-   }
-
-   Color Rect::get_outline_color() const
-   {
-      return rect.getOutlineColor();
-   }
-
-   float Rect::get_outline_thickness() const
-   {
-      return rect.getOutlineThickness();
    }
 
    // Update functions

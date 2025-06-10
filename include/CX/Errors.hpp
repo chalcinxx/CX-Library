@@ -5,12 +5,8 @@ namespace cx::errors
 {
    namespace vector
    {
-      static constexpr const char* division_by_zero2 = "'Vec2' attempted to divide by zero.";
-      static constexpr const char* division_by_zero4 = "'Vec4' attempted to divide by zero.";
-      static constexpr const char* division_by_zero5 = "'Vec5' attempted to divide by zero.";
-      static constexpr const char* out_of_bounds2    = "'Vec2' index out of bounds at '[]' operator or 'at' function. Index 0 - 'x', index 1 - 'y'.";
-      static constexpr const char* out_of_bounds4    = "'Vec4' index out of bounds at '[]' operator or 'at' function. Index 0 - 'x', index 1 - 'y', index 2 - 'w', index 3 - 'h'.";
-      static constexpr const char* out_of_bounds5    = "'Vec5' index out of bounds at '[]' operator or 'at' function. Index 0 - 'x', index 1 - 'y', index 2 - 'w', index 3 - 'h', index 4 - 'r'.";
+      static constexpr const char* division_by_zero = "Vector attempted to divide by zero.";
+      static constexpr const char* out_of_bounds    = "Vector index out of bounds at '[]' operator or 'at' function.";
    }
 
    namespace color

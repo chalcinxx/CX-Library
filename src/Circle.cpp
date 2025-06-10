@@ -10,10 +10,7 @@ namespace cx
 
    // Constructors
 
-   Circle::Circle()
-   {
-      circle.setOutlineColor(Color(0));
-   }
+   Circle::Circle() {}
 
    Circle::Circle(const CircleStyle& style)
    {
@@ -21,8 +18,6 @@ namespace cx
       circle.setOrigin(Vec2f(style.radius));
       circle.setPointCount(style.point_count);
       circle.setFillColor(style.color);
-      circle.setOutlineColor(style.outline_color);
-      circle.setOutlineThickness(style.outline_thickness);
       circle.setTexture(style.texture.get());
    }
 
@@ -36,7 +31,6 @@ namespace cx
       circle.setPosition(position);
       circle.setPointCount(point_count);
       circle.setFillColor(color);
-      circle.setOutlineColor(Color(0));
    }
 
    // Constructors after creation
@@ -47,8 +41,6 @@ namespace cx
       circle.setOrigin(Vec2f(style.radius));
       circle.setPointCount(style.point_count);
       circle.setFillColor(style.color);
-      circle.setOutlineColor(style.outline_color);
-      circle.setOutlineThickness(style.outline_thickness);
       circle.setTexture(style.texture.get());
    }
 
@@ -62,7 +54,6 @@ namespace cx
       circle.setPosition(position);
       circle.setPointCount(point_count);
       circle.setFillColor(color);
-      circle.setOutlineColor(Color(0));
    }
 
    // Setter functions
@@ -70,16 +61,6 @@ namespace cx
    void Circle::set_center(const Vec2f& position)
    {
       circle.setPosition(position);
-   }
-
-   void Circle::set_top_left(const Vec2f& position)
-   {
-      circle.setPosition(position + get_origin());
-   }
-
-   void Circle::set_bottom_right(const Vec2f& position)
-   {
-      circle.setPosition(position - get_origin());
    }
 
    void Circle::set_scale(const Vec2f& scale)
@@ -110,16 +91,6 @@ namespace cx
    void Circle::set_color(const Color& color)
    {
       circle.setFillColor(color);
-   }
-
-   void Circle::set_outline_color(const Color& color)
-   {
-      circle.setOutlineColor(color);
-   }
-
-   void Circle::set_outline_thickness(float thickness)
-   {
-      circle.setOutlineThickness(thickness);
    }
 
    void Circle::set_radius(float radius)
@@ -170,10 +141,11 @@ namespace cx
       return get_scale().abs() * circle.getRadius();
    }
 
-   CircleBounds Circle::get_circle_bounds() const
-   {
-      return {cx::abs(get_radius()), get_center(), get_scale().abs(), get_rotation()};
-   }
+   // This function is defined in 'UIElement.cpp'
+   // CircleBounds Circle::get_circle_bounds() const
+   // {
+   //    return ...;
+   // }
 
    const sf::Texture* Circle::get_texture() const
    {
@@ -188,16 +160,6 @@ namespace cx
    Color Circle::get_color() const
    {
       return circle.getFillColor();
-   }
-
-   Color Circle::get_outline_color() const
-   {
-      return circle.getOutlineColor();
-   }
-
-   float Circle::get_outline_thickness() const
-   {
-      return circle.getOutlineThickness();
    }
 
    float Circle::get_radius() const

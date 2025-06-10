@@ -60,8 +60,6 @@ namespace cx
 
       /// @brief Import UIElement functions to not override them.
       using UIElement::set_center;
-      using UIElement::set_top_left;
-      using UIElement::set_bottom_right;
       using UIElement::set_scale;
       using UIElement::set_size;
       using UIElement::set_rotation;
@@ -69,14 +67,6 @@ namespace cx
       /// @brief Change center position of the bar.
       /// @param position New center.
       void set_center(const Vec2f& position) override;
-
-      /// @brief Change top-left position of the bar.
-      /// @param position New position.
-      void set_top_left(const Vec2f& position) override;
-
-      /// @brief Change bottom-right position of the bar.
-      /// @param position New position.
-      void set_bottom_right(const Vec2f& position) override;
 
       /// @brief Change scale of the bar.
       /// @param scale New scale.
@@ -123,7 +113,7 @@ namespace cx
       void set_color(const Color& color) override;
 
       /// @brief Change color of the background.
-      /// @param color Nnew color.
+      /// @param color New color.
       void set_bg_color(const Color& color);
 
       /// @brief Change color of the foreground and background.
@@ -131,31 +121,9 @@ namespace cx
       /// @param bg_color New background color.
       void set_color(const Color& fg_color, const Color& bg_color);
 
-      /// @brief Change outline color of the foreground.
-      /// @param color New color.
-      void set_outline_color(const Color& color) override;
-
-      /// @brief Change outline color of the background.
-      /// @param color New color.
-      void set_bg_outline_color(const Color& color);
-
-      /// @brief Change outline color of the foreground and background.
-      /// @param fg_color New foreground outline color.
-      /// @param bg_color New background outline color.
-      void set_outline_color(const Color& fg_color, const Color& bg_color);
-
-      /// @brief Change outline thickness of the foreground.
-      /// @param thickness New thickness.
-      void set_outline_thickness(float thickness) override;
-
-      /// @brief Change outline thickness of the background.
-      /// @param thickness New thickness.
-      void set_bg_outline_thickness(float thickness);
-
-      /// @brief Change outline thickness of the foreground and background.
-      /// @param fgThickness New foreground thickness.
-      /// @param bgThickness New background thickness.
-      void set_outline_thickness(float fg_thickness, float bg_thickness);
+      /// @brief Change opacity of the background.
+      /// @param opacity Opacity 0-255.
+      void set_bg_opacity(unsigned char opacity);
 
       /// @brief Change progress of the bar.
       /// @param progress Progress 0 to 1.
@@ -215,21 +183,9 @@ namespace cx
       /// @return Color.
       Color get_bg_color() const;
 
-      /// @brief Get outline color of the foreground.
-      /// @return Outline color.
-      Color get_outline_color() const override;
-
-      /// @brief Get outline color of the background.
-      /// @return Outline color.
-      Color get_bg_outline_color() const;
-
-      /// @brief Get outline thickness of the foreground.
-      /// @return Outline thickness.
-      float get_outline_thickness() const override;
-
-      /// @brief Get outline thickness of the background.
-      /// @return Outline thickness.
-      float get_bg_outline_thickness() const;
+      /// @brief Get opacity of the background.
+      /// @return Opacity.
+      unsigned char get_bg_opacity() const;
 
       /// @brief Get progress of the bar.
       /// @return Progress.

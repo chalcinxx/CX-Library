@@ -36,14 +36,8 @@ namespace cx
       /// @brief Color of the text.
       Color text_color = Color(255);
 
-      /// @brief Outline color of the input.
-      Color outline_color = Color(0);
-
       /// @brief Outline color of the text.
       Color text_outline_color = Color(0);
-
-      /// @brief Outline thickness of the input.
-      float outline_thickness = 1.f;
 
       /// @brief Outline thickness of the text.
       float text_outline_thickness = 1.f;

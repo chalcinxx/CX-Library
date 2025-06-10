@@ -338,7 +338,7 @@ namespace cx
       constexpr Vec5<T> operator/(U factor) const
       {
          if (static_cast<T>(factor) == T(0))
-            throw std::runtime_error(errors::vector::division_by_zero5);
+            throw std::runtime_error(errors::vector::division_by_zero);
 
          return Vec5<T>(
             x / static_cast<T>(factor), y / static_cast<T>(factor),
@@ -354,7 +354,7 @@ namespace cx
       constexpr Vec5<T> operator/(const Vec5<U>& other) const
       {
          if (Vec5<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero5);
+            throw std::runtime_error(errors::vector::division_by_zero);
 
          return Vec5<T>(
             x / static_cast<T>(other.x), y / static_cast<T>(other.y),
@@ -370,7 +370,7 @@ namespace cx
       constexpr Vec5<T> operator/(const sf::Rect<U>& other) const
       {
          if (Vec5<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero5);
+            throw std::runtime_error(errors::vector::division_by_zero);
 
          return Vec5<T>(
             x / static_cast<T>(other.x), y / static_cast<T>(other.y),
@@ -489,7 +489,7 @@ namespace cx
       constexpr const Vec5<T>& operator/=(U factor)
       {
          if (static_cast<T>(factor) == T(0))
-            throw std::runtime_error(errors::vector::division_by_zero5);
+            throw std::runtime_error(errors::vector::division_by_zero);
 
          x /= static_cast<T>(factor);
          y /= static_cast<T>(factor);
@@ -506,7 +506,7 @@ namespace cx
       constexpr const Vec5<T>& operator/=(const Vec5<U>& other)
       {
          if (Vec5<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero5);
+            throw std::runtime_error(errors::vector::division_by_zero);
 
          x /= static_cast<T>(other.x);
          y /= static_cast<T>(other.y);
@@ -523,7 +523,7 @@ namespace cx
       constexpr const Vec5<T>& operator/=(const sf::Rect<U>& other)
       {
          if (Vec5<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero5);
+            throw std::runtime_error(errors::vector::division_by_zero);
 
          x /= static_cast<T>(other.left);
          y /= static_cast<T>(other.top);
@@ -947,7 +947,7 @@ namespace cx
       constexpr T& operator[](size_t index)
       {
          if (index > 4)
-            throw std::runtime_error(errors::vector::out_of_bounds5);
+            throw std::runtime_error(errors::vector::out_of_bounds);
          return (index == 0 ? x : (index == 1 ? y : (index == 2 ? w : (index== 3 ? h : r))));
       }
 
@@ -957,7 +957,7 @@ namespace cx
       constexpr T operator[](size_t index) const
       {
          if (index > 4)
-            throw std::runtime_error(errors::vector::out_of_bounds5);
+            throw std::runtime_error(errors::vector::out_of_bounds);
          return (index == 0 ? x : (index == 1 ? y : (index == 2 ? w : (index== 3 ? h : r))));
       }
 

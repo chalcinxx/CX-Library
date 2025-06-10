@@ -26,12 +26,6 @@ namespace cx
       /// @brief Color of the rectangle.
       Color color = Color(255);
 
-      /// @brief Outline color of the rectangle.
-      Color outline_color = Color(0);
-      
-      /// @brief Outline thickness of the rectangle.
-      float outline_thickness = 0.f;
-
       /// @brief Texture of the rectangle.
       std::shared_ptr<sf::Texture> texture;
 

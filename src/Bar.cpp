@@ -19,9 +19,6 @@ namespace cx
 
       clip_shader.setUniform("texture", sf::Shader::CurrentTexture);
       clip_shader.setUniform("progress", bar_progress);
-
-      background.setOutlineColor(Color(0));
-      foreground.setOutlineColor(Color(0));
    }
 
    Bar::Bar(const BarStyle& style,
@@ -33,13 +30,9 @@ namespace cx
       background.setSize(style.size);
       background.setOrigin(style.size * .5f);
       background.setFillColor(style.bg_color);
-      background.setOutlineColor(style.bg_outline_color);
-      background.setOutlineThickness(style.bg_outline_thickness);
       background.setTexture(style.bg_texture.get());
 
       foreground.setFillColor(style.fg_color);
-      foreground.setOutlineColor(style.fg_outline_color);
-      foreground.setOutlineThickness(style.fg_outline_thickness);
       foreground.setTexture(style.fg_texture.get());
       foreground.setOrigin(background.getOrigin());
 
@@ -60,11 +53,9 @@ namespace cx
       background.setOrigin(size * .5f);
       background.setPosition(position);
       background.setFillColor(bg_color);
-      background.setOutlineColor(Color(0));
 
       foreground.setPosition(position);
       foreground.setFillColor(fg_color);
-      foreground.setOutlineColor(Color(0));
       foreground.setOrigin(background.getOrigin());
       
       bar_progress = std::clamp(progress, 0.f, 1.f);
@@ -82,13 +73,9 @@ namespace cx
       background.setSize(style.size);
       background.setOrigin(style.size * .5f);
       background.setFillColor(style.bg_color);
-      background.setOutlineColor(style.bg_outline_color);
-      background.setOutlineThickness(style.bg_outline_thickness);
       background.setTexture(style.bg_texture.get());
 
       foreground.setFillColor(style.fg_color);
-      foreground.setOutlineColor(style.fg_outline_color);
-      foreground.setOutlineThickness(style.fg_outline_thickness);
       foreground.setTexture(style.fg_texture.get());
       foreground.setOrigin(background.getOrigin());
 
@@ -109,11 +96,9 @@ namespace cx
       background.setOrigin(size * .5f);
       background.setPosition(position);
       background.setFillColor(bg_color);
-      background.setOutlineColor(Color(0));
 
       foreground.setPosition(position);
       foreground.setFillColor(fg_color);
-      foreground.setOutlineColor(Color(0));
       foreground.setOrigin(background.getOrigin());
       
       bar_progress = std::clamp(progress, 0.f, 1.f);
@@ -126,18 +111,6 @@ namespace cx
    {
       background.setPosition(position);
       foreground.setPosition(position);
-   }
-
-   void Bar::set_top_left(const Vec2f& position)
-   {
-      background.setPosition(position + background.getOrigin());
-      foreground.setPosition(background.getPosition());
-   }
-
-   void Bar::set_bottom_right(const Vec2f& position)
-   {
-      background.setPosition(position - background.getOrigin());
-      foreground.setPosition(background.getPosition());
    }
 
    void Bar::set_scale(const Vec2f& scale)
@@ -211,36 +184,9 @@ namespace cx
       background.setFillColor(bg_color);
    }
 
-   void Bar::set_outline_color(const Color& color)
+   void Bar::set_bg_opacity(unsigned char opacity)
    {
-      foreground.setOutlineColor(color);
-   }
-
-   void Bar::set_bg_outline_color(const Color& color)
-   {
-      background.setOutlineColor(color);
-   }
-
-   void Bar::set_outline_color(const Color& fg_color, const Color& bg_color)
-   {
-      foreground.setOutlineColor(fg_color);
-      background.setOutlineColor(bg_color);
-   }
-
-   void Bar::set_outline_thickness(float thickness)
-   {
-      foreground.setOutlineThickness(thickness);
-   }
-
-   void Bar::set_bg_outline_thickness(float thickness)
-   {
-      background.setOutlineThickness(thickness);
-   }
-
-   void Bar::set_outline_thickness(float fg_thickness, float bg_thickness)
-   {
-      foreground.setOutlineThickness(fg_thickness);
-      background.setOutlineThickness(bg_thickness);
+      background.setFillColor(Color(get_bg_color(), opacity));
    }
 
    void Bar::set_progress(float progress)
@@ -317,24 +263,9 @@ namespace cx
       return background.getFillColor();
    }
 
-   Color Bar::get_outline_color() const
+   unsigned char Bar::get_bg_opacity() const
    {
-      return foreground.getOutlineColor();
-   }
-
-   Color Bar::get_bg_outline_color() const
-   {
-      return background.getOutlineColor();
-   }
-
-   float Bar::get_outline_thickness() const
-   {
-      return foreground.getOutlineThickness();
-   }
-
-   float Bar::get_bg_outline_thickness() const
-   {
-      return background.getOutlineThickness();
+      return background.getFillColor().a;
    }
 
    float Bar::get_progress() const

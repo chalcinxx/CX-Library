@@ -13,7 +13,8 @@ namespace cx
       bar,        ///< @brief Bar class.
       slider,     ///< @brief Slider class.
       text_input, ///< @brief Text input class.
-      circle      ///< @brief Circle class.
+      circle,     ///< @brief Circle class.
+      plane       ///< @brief Plane class.
    };
 }
 

@@ -58,8 +58,8 @@ namespace cx
       }
 
       /// @brief Create a new vector.
-      /// @param newX X value.
-      /// @param newY Y value.
+      /// @param new_x X value.
+      /// @param new_y Y value.
       template<Number U>
       constexpr void create(U new_x, U new_y)
       {
@@ -179,7 +179,7 @@ namespace cx
       constexpr Vec2<T> operator/(U factor) const
       {
          if (static_cast<T>(factor) == T(0))
-            throw std::runtime_error(errors::vector::division_by_zero2);
+            throw std::runtime_error(errors::vector::division_by_zero);
          return Vec2<T>(x / static_cast<T>(factor), y / static_cast<T>(factor));
       }
 
@@ -190,7 +190,7 @@ namespace cx
       constexpr Vec2<T> operator/(const Vec2<U>& other) const
       {
          if (Vec2<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero2);
+            throw std::runtime_error(errors::vector::division_by_zero);
          return Vec2<T>(x / static_cast<T>(other.x), y / static_cast<T>(other.y));
       }
 
@@ -201,7 +201,7 @@ namespace cx
       constexpr Vec2<T> operator/(const sf::Vector2<U>& other) const
       {
          if (Vec2<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero2);
+            throw std::runtime_error(errors::vector::division_by_zero);
          return Vec2<T>(x / static_cast<T>(other.x), y / static_cast<T>(other.y));
       }
 
@@ -298,7 +298,7 @@ namespace cx
       constexpr const Vec2<T>& operator/=(U factor)
       {
          if (static_cast<T>(factor) == T(0))
-            throw std::runtime_error(errors::vector::division_by_zero2);
+            throw std::runtime_error(errors::vector::division_by_zero);
          x /= static_cast<T>(factor);
          y /= static_cast<T>(factor);
          return *this;
@@ -311,7 +311,7 @@ namespace cx
       constexpr const Vec2<T>& operator/=(const Vec2<U>& other)
       {
          if (Vec2<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero2);
+            throw std::runtime_error(errors::vector::division_by_zero);
          x /= static_cast<T>(other.x);
          y /= static_cast<T>(other.y);
          return *this;
@@ -324,7 +324,7 @@ namespace cx
       constexpr const Vec2<T>& operator/=(const sf::Vector2<U>& other)
       {
          if (Vec2<T>(other).zero())
-            throw std::runtime_error(errors::vector::division_by_zero2);
+            throw std::runtime_error(errors::vector::division_by_zero);
          x /= static_cast<T>(other.x);
          y /= static_cast<T>(other.y);
          return *this;
@@ -737,7 +737,7 @@ namespace cx
       constexpr T& operator[](size_t index)
       {
          if (index > 1)
-            throw std::runtime_error(errors::vector::out_of_bounds2);
+            throw std::runtime_error(errors::vector::out_of_bounds);
          return (index == 1 ? y : x);
       }
 
@@ -747,7 +747,7 @@ namespace cx
       constexpr T operator[](size_t index) const
       {
          if (index > 1)
-            throw std::runtime_error(errors::vector::out_of_bounds2);
+            throw std::runtime_error(errors::vector::out_of_bounds);
          return (index == 1 ? y : x);
       }
 

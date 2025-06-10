@@ -130,16 +130,6 @@ namespace cx
       text.setPosition(position);
    }
 
-   void Text::set_top_left(const Vec2f& position)
-   {
-      text.setPosition(position + text.getOrigin());
-   }
-
-   void Text::set_bottom_right(const Vec2f& position)
-   {
-      text.setPosition(position - text.getOrigin());
-   }
-
    void Text::set_scale(const Vec2f& scale)
    {
       text.setScale(scale);

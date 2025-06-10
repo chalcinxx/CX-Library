@@ -15,7 +15,6 @@ namespace cx
    TextInput::TextInput()
    {
       text.setOutlineColor(Color(0));
-      rect.setOutlineColor(Color(0));
    }
 
    TextInput::TextInput(const TextInputStyle& style,
@@ -35,8 +34,6 @@ namespace cx
       rect.setSize(style.size);
       rect.setTexture(style.texture.get());
       rect.setFillColor(style.color);
-      rect.setOutlineThickness(style.outline_thickness);
-      rect.setOutlineColor(style.outline_color);
 
       rect.setOrigin(style.size * .5f);
       recenter();
@@ -60,7 +57,6 @@ namespace cx
 
       rect.setPosition(position);
       rect.setSize(size);
-      rect.setOutlineColor(Color(0));
 
       rect.setOrigin(size * .5f);
       recenter();
@@ -86,8 +82,6 @@ namespace cx
       rect.setSize(style.size);
       rect.setTexture(style.texture.get());
       rect.setFillColor(style.color);
-      rect.setOutlineThickness(style.outline_thickness);
-      rect.setOutlineColor(style.outline_color);
 
       rect.setOrigin(style.size * .5f);
       recenter();
@@ -111,7 +105,6 @@ namespace cx
 
       rect.setPosition(position);
       rect.setSize(size);
-      rect.setOutlineColor(Color(0));
 
       rect.setOrigin(size * .5f);
       recenter();
@@ -124,18 +117,6 @@ namespace cx
    {
       rect.setPosition(position);
       text.setPosition(position);
-   }
-
-   void TextInput::set_top_left(const Vec2f& position)
-   {
-      rect.setPosition(position + rect.getOrigin());
-      text.setPosition(rect.getPosition());
-   }
-
-   void TextInput::set_bottom_right(const Vec2f& position)
-   {
-      rect.setPosition(position - rect.getOrigin());
-      text.setPosition(rect.getPosition());
    }
 
    void TextInput::set_scale(const Vec2f& scale)
@@ -170,16 +151,6 @@ namespace cx
    void TextInput::set_color(const Color& color)
    {
       rect.setFillColor(color);
-   }
-
-   void TextInput::set_outline_color(const Color& color)
-   {
-      rect.setOutlineColor(color);
-   }
-
-   void TextInput::set_outline_thickness(float thickness)
-   {
-      rect.setOutlineThickness(thickness);
    }
 
    void TextInput::set_string(const std::string& string)
@@ -226,6 +197,11 @@ namespace cx
    void TextInput::set_text_color(const Color& color)
    {
       text.setFillColor(color);
+   }
+
+   void TextInput::set_text_opacity(unsigned char opacity)
+   {
+      text.setFillColor(Color(get_text_color(), opacity));
    }
 
    void TextInput::set_text_outline_color(const Color& color)
@@ -331,16 +307,6 @@ namespace cx
       return rect.getFillColor();
    }
 
-   Color TextInput::get_outline_color() const
-   {
-      return rect.getOutlineColor();
-   }
-
-   float TextInput::get_outline_thickness() const
-   {
-      return rect.getOutlineThickness();
-   }
-
    const std::string& TextInput::get_string() const
    {
       return hidden;
@@ -369,6 +335,11 @@ namespace cx
    Color TextInput::get_text_color() const
    {
       return text.getFillColor();
+   }
+
+   unsigned char TextInput::get_text_opacity() const
+   {
+      return text.getFillColor().a;
    }
 
    Color TextInput::get_text_outline_color() const

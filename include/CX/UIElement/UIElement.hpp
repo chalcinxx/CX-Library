@@ -87,7 +87,7 @@ namespace cx
 
       /// @brief Change top-left position of the element.
       /// @param position New position.
-      virtual void set_top_left(const Vec2f& position) = 0;
+      void set_top_left(const Vec2f& position);
 
       /// @brief Change top-left position of the element.
       /// @param left New X position.
@@ -108,7 +108,7 @@ namespace cx
 
       /// @brief Change bottom-right position of the element.
       /// @param position New position.
-      virtual void set_bottom_right(const Vec2f& position) = 0;
+      void set_bottom_right(const Vec2f& position);
 
       /// @brief Change bottom-right position of the element.
       /// @param right New right position.
@@ -181,13 +181,9 @@ namespace cx
       /// @param color New color.
       virtual void set_color(const Color& color) = 0;
 
-      /// @brief Change outline color of the element.
-      /// @param color New color.
-      virtual void set_outline_color(const Color& color) = 0;
-
-      /// @brief Change outline thickness of the element.
-      /// @param thickness New outline thickness.
-      virtual void set_outline_thickness(float thickness) = 0;
+      /// @brief Change opacity of the element.
+      /// @param opacity Opacity 0-255.
+      void set_opacity(unsigned char opacity);
 
       // Getter functions
       
@@ -287,13 +283,9 @@ namespace cx
       /// @return Color.
       virtual Color get_color() const = 0;
 
-      /// @brief Get outline color of the element.
-      /// @return Outline color.
-      virtual Color get_outline_color() const = 0;
-
-      /// @brief Get outline thickness of the element.
-      /// @return Outline thickness.
-      virtual float get_outline_thickness() const = 0;
+      /// @brief Get opacity of the element.
+      /// @return Opacity.
+      unsigned char get_opacity() const;
 
       // Update functions
 

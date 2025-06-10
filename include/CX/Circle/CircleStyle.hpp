@@ -28,12 +28,6 @@ namespace cx
       /// @brief Color of the circle.
       Color color = Color(255);
 
-      /// @brief Outline color of the circle.
-      Color outline_color = Color(0);
-
-      /// @brief Outline thickness of the circle.
-      float outline_thickness = 0.f;
-
       /// @brief Texture of the circle.
       std::shared_ptr<sf::Texture> texture;
 

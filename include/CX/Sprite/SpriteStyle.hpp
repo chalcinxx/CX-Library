@@ -32,12 +32,6 @@ namespace cx
       /// @brief Color of the sprite.
       Color color = Color(255);
 
-      /// @brief Outline color of the sprite.
-      Color outline_color = Color(0);
-
-      /// @brief Outline thickness of the sprite.
-      float outline_thickness = 0.f;
-
       /// @brief Access first style.
       /// @return First style.
       static SpriteStyle& style1()

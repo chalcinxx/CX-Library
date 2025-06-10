@@ -29,18 +29,6 @@ namespace cx
       /// @brief Color of the background.
       Color bg_color = Color(0);
 
-      /// @brief Outline color of the foreground.
-      Color fg_outline_color = Color(0);
-
-      /// @brief Outline color of the background.
-      Color bg_outline_color = Color(0);
-
-      /// @brief Outline thickness of the foreground.
-      float fg_outline_thickness = 0.f;
-
-      /// @brief Outline thickness of the background.
-      float bg_outline_thickness = 0.f;
-
       /// @brief Texture of the foreground.
       std::shared_ptr<sf::Texture> fg_texture;
 

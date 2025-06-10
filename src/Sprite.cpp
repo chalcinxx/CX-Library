@@ -12,18 +12,13 @@ namespace cx
 
    // Constructors
 
-   Sprite::Sprite()
-   {
-      rect.setOutlineColor(Color(0));
-   }
+   Sprite::Sprite() {}
 
    Sprite::Sprite(const SpriteStyle& style)
    {
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
       rect.setFillColor(style.color);
-      rect.setOutlineColor(style.outline_color);
-      rect.setOutlineThickness(style.outline_thickness);
       rect.setTexture(style.texture.get());
 
       if (!style.texture_rect.empty())
@@ -39,7 +34,6 @@ namespace cx
       rect.setSize(size);
       rect.setOrigin(size * .5f);
       rect.setTexture(texture);
-      rect.setOutlineColor(Color(0));
 
       if (!texture_rect.empty())
          rect.setTextureRect(texture_rect);
@@ -52,8 +46,6 @@ namespace cx
       rect.setSize(style.size);
       rect.setOrigin(style.size * .5f);
       rect.setFillColor(style.color);
-      rect.setOutlineColor(style.outline_color);
-      rect.setOutlineThickness(style.outline_thickness);
       rect.setTexture(style.texture.get());
 
       if (!style.texture_rect.empty())
@@ -69,7 +61,6 @@ namespace cx
       rect.setSize(size);
       rect.setOrigin(size * .5f);
       rect.setTexture(texture);
-      rect.setOutlineColor(Color(0));
 
       if (!textureRect.empty())
          rect.setTextureRect(textureRect);
@@ -80,16 +71,6 @@ namespace cx
    void Sprite::set_center(const Vec2f& position)
    {
       rect.setPosition(position);   
-   }
-
-   void Sprite::set_top_left(const Vec2f& position)
-   {
-      rect.setPosition(position + rect.getOrigin());
-   }
-
-   void Sprite::set_bottom_right(const Vec2f& position)
-   {
-      rect.setPosition(position - rect.getOrigin());
    }
 
    void Sprite::set_scale(const Vec2f& scale)
@@ -121,16 +102,6 @@ namespace cx
    void Sprite::set_color(const Color& color)
    {
       rect.setFillColor(color);
-   }
-
-   void Sprite::set_outline_color(const Color& color)
-   {
-      rect.setOutlineColor(color);
-   }
-
-   void Sprite::set_outline_thickness(float thickness)
-   {
-      rect.setOutlineThickness(thickness);
    }
 
    // Getter functions
@@ -178,16 +149,6 @@ namespace cx
    Color Sprite::get_color() const
    {
       return rect.getFillColor();
-   }
-
-   Color Sprite::get_outline_color() const
-   {
-      return rect.getOutlineColor();
-   }
-
-   float Sprite::get_outline_thickness() const
-   {
-      return rect.getOutlineThickness();
    }
 
    // Update functions

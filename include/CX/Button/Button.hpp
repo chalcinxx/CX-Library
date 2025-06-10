@@ -65,8 +65,6 @@ namespace cx
 
       /// @brief Import UIElement functions to not override them.
       using UIElement::set_center;
-      using UIElement::set_top_left;
-      using UIElement::set_bottom_right;
       using UIElement::set_scale;
       using UIElement::set_size;
       using UIElement::set_rotation;
@@ -74,14 +72,6 @@ namespace cx
       /// @brief Change center position of the button.
       /// @param position New center.
       void set_center(const Vec2f& position) override;
-
-      /// @brief Change top-left position of the button.
-      /// @param position New position.
-      void set_top_left(const Vec2f& position) override;
-
-      /// @brief Change bottom-right position of the button.
-      /// @param position New position.
-      void set_bottom_right(const Vec2f& position) override;
 
       /// @brief Change scale of the button.
       /// @param scale New scale.
@@ -107,14 +97,6 @@ namespace cx
       /// @param color New color.
       void set_color(const Color& color) override;
 
-      /// @brief Change outline color of the button.
-      /// @param color New color.
-      void set_outline_color(const Color& color) override;
-
-      /// @brief Change outline thickness of the button.
-      /// @param thickness New thickness.
-      void set_outline_thickness(float thickness) override;
-
       /// @brief Change string of the text.
       /// @param string New string.
       void set_string(const std::string& string);
@@ -134,6 +116,10 @@ namespace cx
       /// @brief Change color of the text.
       /// @param color New color.
       void set_text_color(const Color& color);
+
+      /// @brief Change opacity of the text.
+      /// @param opacity Opacity 0-255.
+      void set_text_opacity(unsigned char opacity);
 
       /// @brief Change outline color of the text.
       /// @param color New color.
@@ -188,14 +174,6 @@ namespace cx
       /// @return Color.
       Color get_color() const override;
 
-      /// @brief Get outline color of the button.
-      /// @return Outline color.
-      Color get_outline_color() const override;
-
-      /// @brief Get outline thickness of the button.
-      /// @return Outline thickness.
-      float get_outline_thickness() const override;
-
       /// @brief Get string of the text.
       /// @return String.
       std::string get_string() const;
@@ -215,6 +193,10 @@ namespace cx
       /// @brief Get color of the text.
       /// @return Color.
       Color get_text_color() const;
+
+      /// @brief Get opacity of the text.
+      /// @return Opacity.
+      unsigned char get_text_opacity() const;
 
       /// @brief Get outline color of the text.
       /// @return Outline color.

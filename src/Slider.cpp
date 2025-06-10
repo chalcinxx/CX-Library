@@ -19,10 +19,6 @@ namespace cx
 
       clip_shader.setUniform("texture", sf::Shader::CurrentTexture);
       clip_shader.setUniform("progress", slider_progress);
-
-      foreground.setOutlineColor(Color(0));
-      background.setOutlineColor(Color(0));
-      knob.setOutlineColor(Color(0));
    }
 
    Slider::Slider(const SliderStyle& style,
@@ -43,22 +39,16 @@ namespace cx
       background.setSize(style.size);
       background.setOrigin(style.size * .5f);
       background.setFillColor(style.bg_color);
-      background.setOutlineColor(style.bg_outline_color);
-      background.setOutlineThickness(style.bg_outline_thickness);
       background.setTexture(style.bg_texture.get());
 
       foreground.setSize(style.size);
       foreground.setOrigin(background.getOrigin());
       foreground.setFillColor(style.fg_color);
-      foreground.setOutlineColor(style.fg_outline_color);
-      foreground.setOutlineThickness(style.fg_outline_thickness);
       foreground.setTexture(style.fg_texture.get());
 
       knob.setSize(style.knob_size);
       knob.setOrigin(style.knob_size * .5f);
       knob.setFillColor(style.knob_color);
-      knob.setOutlineColor(style.knob_outline_color);
-      knob.setOutlineThickness(style.knob_outline_thickness);
       knob.setTexture(style.knob_texture.get());
 
       reposition_knob();
@@ -85,18 +75,15 @@ namespace cx
       background.setOrigin(background_size * .5f);
       background.setPosition(position);
       background.setFillColor(Color(0));
-      background.setOutlineColor(Color(0));
 
       foreground.setSize(background_size);
       foreground.setOrigin(background.getOrigin());
       foreground.setPosition(position);
       foreground.setFillColor(Color(255));
-      foreground.setOutlineColor(Color(0));
 
       knob.setSize(knob_size);
       knob.setOrigin(knob_size * .5f);
       knob.setFillColor(Color(125));
-      knob.setOutlineColor(Color(0));
 
       reposition_knob();
    }
@@ -121,22 +108,16 @@ namespace cx
       background.setSize(style.size);
       background.setOrigin(style.size * .5f);
       background.setFillColor(style.bg_color);
-      background.setOutlineColor(style.bg_outline_color);
-      background.setOutlineThickness(style.bg_outline_thickness);
       background.setTexture(style.bg_texture.get());
 
       foreground.setSize(style.size);
       foreground.setOrigin(background.getOrigin());
       foreground.setFillColor(style.fg_color);
-      foreground.setOutlineColor(style.fg_outline_color);
-      foreground.setOutlineThickness(style.fg_outline_thickness);
       foreground.setTexture(style.fg_texture.get());
 
       knob.setSize(style.knob_size);
       knob.setOrigin(style.knob_size * .5f);
       knob.setFillColor(style.knob_color);
-      knob.setOutlineColor(style.knob_outline_color);
-      knob.setOutlineThickness(style.knob_outline_thickness);
       knob.setTexture(style.knob_texture.get());
 
       reposition_knob();
@@ -163,18 +144,15 @@ namespace cx
       background.setOrigin(background_size * .5f);
       background.setPosition(position);
       background.setFillColor(Color(0));
-      background.setOutlineColor(Color(0));
 
       foreground.setSize(background_size);
       foreground.setOrigin(background.getOrigin());
       foreground.setPosition(position);
       foreground.setFillColor(Color(255));
-      foreground.setOutlineColor(Color(0));
 
       knob.setSize(knob_size);
       knob.setOrigin(knob_size * .5f);
       knob.setFillColor(Color(125));
-      knob.setOutlineColor(Color(0));
 
       reposition_knob();
    }
@@ -185,20 +163,6 @@ namespace cx
    {
       background.setPosition(center);
       foreground.setPosition(center);
-      reposition_knob();
-   }
-
-   void Slider::set_top_left(const Vec2f& position)
-   {
-      background.setPosition(position + background.getOrigin());
-      foreground.setPosition(background.getPosition());
-      reposition_knob();
-   }
-
-   void Slider::set_bottom_right(const Vec2f& position)
-   {
-      background.setPosition(position - background.getOrigin());
-      foreground.setPosition(background.getPosition());
       reposition_knob();
    }
 
@@ -325,52 +289,14 @@ namespace cx
       knob.setFillColor(knob_color);
    }
 
-   void Slider::set_outline_color(const Color& color)
+   void Slider::set_fg_opacity(unsigned char opacity)
    {
-      background.setOutlineColor(color);
+      foreground.setFillColor(Color(get_fg_color(), opacity));
    }
 
-   void Slider::set_fg_outline_color(const Color& color)
+   void Slider::set_knob_opacity(unsigned char opacity)
    {
-      foreground.setOutlineColor(color);
-   }
-
-   void Slider::set_knob_outline_color(const Color& color)
-   {
-      knob.setOutlineColor(color);
-   }
-
-   void Slider::set_outline_color(const Color& bg_color,
-                                  const Color& fg_color,
-                                  const Color& knob_color)
-   {
-      background.setOutlineColor(bg_color);
-      foreground.setOutlineColor(fg_color);
-      knob.setOutlineColor(knob_color);
-   }
-
-   void Slider::set_outline_thickness(float thickness)
-   {
-      background.setOutlineThickness(thickness);
-   }
-
-   void Slider::set_fg_outline_thickness(float thickness)
-   {
-      foreground.setOutlineThickness(thickness);
-   }
-
-   void Slider::set_knob_outline_thickness(float thickness)
-   {
-      knob.setOutlineThickness(thickness);
-   }
-
-   void Slider::set_outline_thickness(float bg_thickness,
-                                      float fg_thickness,
-                                      float knob_thickness)
-   {
-      background.setOutlineThickness(bg_thickness);
-      foreground.setOutlineThickness(fg_thickness);
-      knob.setOutlineThickness(knob_thickness);
+      knob.setFillColor(Color(get_knob_color(), opacity));
    }
 
    void Slider::set_step(float step)
@@ -542,34 +468,14 @@ namespace cx
       return knob.getFillColor();
    }
 
-   Color Slider::get_outline_color() const
+   unsigned char Slider::get_fg_opacity() const
    {
-      return background.getOutlineColor();
+      return foreground.getFillColor().a;
    }
 
-   Color Slider::get_fg_outline_color() const
+   unsigned char Slider::get_knob_opacity() const
    {
-      return foreground.getOutlineColor();
-   }
-
-   Color Slider::get_knob_outline_color() const
-   {
-      return knob.getOutlineColor();
-   }
-
-   float Slider::get_outline_thickness() const
-   {
-      return background.getOutlineThickness();
-   }
-
-   float Slider::get_fg_outline_thickness() const
-   {
-      return foreground.getOutlineThickness();
-   }
-
-   float Slider::get_knob_outline_thickness() const
-   {
-      return knob.getOutlineThickness();
+      return knob.getFillColor().a;
    }
 
    float Slider::get_knob_width() const

@@ -80,8 +80,6 @@ namespace cx
 
       /// @brief Import UIElement functions to not override them.
       using UIElement::set_center;
-      using UIElement::set_top_left;
-      using UIElement::set_bottom_right;
       using UIElement::set_scale;
       using UIElement::set_size;
       using UIElement::set_rotation;
@@ -89,14 +87,6 @@ namespace cx
       /// @brief Change center position of the slider.
       /// @param center New center.
       void set_center(const Vec2f& center) override;
-
-      /// @brief Change top-left position of the slider.
-      /// @param position New position.
-      void set_top_left(const Vec2f& position) override;
-
-      /// @brief Change bottom-right position of the slider.
-      /// @param position New position.
-      void set_bottom_right(const Vec2f& position) override;
 
       /// @brief Change scale of the slider.
       /// @param scale New scale.
@@ -191,45 +181,13 @@ namespace cx
                      const Color& fg_color,
                      const Color& knob_color);
 
-      /// @brief Change outline color of the background.
-      /// @param color New color.
-      void set_outline_color(const Color& color) override;
+      /// @brief Change opacity of the foreground.
+      /// @param opacity Opacity 0-255.
+      void set_fg_opacity(unsigned char opacity);
 
-      /// @brief Change outline color of the foreground.
-      /// @param color New color.
-      void set_fg_outline_color(const Color& color);
-
-      /// @brief Change outline color of the knob.
-      /// @param color New color.
-      void set_knob_outline_color(const Color& color);
-
-      /// @brief Change outline color of the background, foreground and the knob.
-      /// @param bg_color New background color.
-      /// @param fg_color New foreground color.
-      /// @param knob_color New knob color.
-      void set_outline_color(const Color& bg_color,
-                             const Color& fg_color,
-                             const Color& knob_color);
-
-      /// @brief Change outline thickness of the background.
-      /// @param thickness New thickness.
-      void set_outline_thickness(float thickness) override;
-
-      /// @brief Change outline thickness of the foreground.
-      /// @param thickness New thickness.
-      void set_fg_outline_thickness(float thickness);
-
-      /// @brief Change outline thickness of the knob.
-      /// @param thickness New thickness.
-      void set_knob_outline_thickness(float thickness);
-
-      /// @brief Change outline thickness of the background, foreground and the knob.
-      /// @param bg_thickness New background thickness.
-      /// @param fg_thickness New foreground thickness.
-      /// @param knob_thickness New knob thickness.
-      void set_outline_thickness(float bg_thickness,
-                                 float fg_thickness,
-                                 float knob_thickness);
+      /// @brief Change opacity of the knob.
+      /// @param opacity Opacity 0-255.
+      void set_knob_opacity(unsigned char opacity);
 
       /// @brief Set slider step.
       /// @param step New step.
@@ -362,29 +320,13 @@ namespace cx
       /// @return Color.
       Color get_knob_color() const;
 
-      /// @brief Get outline color of the background.
-      /// @return Outline color.
-      Color get_outline_color() const override;
+      /// @brief Get opacity of the foreground.
+      /// @return Opacity.
+      unsigned char get_fg_opacity() const;
 
-      /// @brief Get outline color of the foreground.
-      /// @return Outline color.
-      Color get_fg_outline_color() const;
-
-      /// @brief Get outline color of the knob.
-      /// @return Outline color.
-      Color get_knob_outline_color() const;
-
-      /// @brief Get outline thickness of the background.
-      /// @return Outline thickness.
-      float get_outline_thickness() const override;
-
-      /// @brief Get outline thickness of the foreground.
-      /// @return Outline thickness.
-      float get_fg_outline_thickness() const;
-
-      /// @brief Get outline thickness of the knob.
-      /// @return Outline thickness.
-      float get_knob_outline_thickness() const;
+      /// @brief Get opacity of the knob.
+      /// @return Opacity.
+      unsigned char get_knob_opacity() const;
 
       /// @brief Get width of the knob.
       /// @return Width.
